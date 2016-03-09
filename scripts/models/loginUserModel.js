@@ -3,7 +3,7 @@
  */
 var LogInUser = (function(){
     function LogInUser(username, password){
-        this.usrname = username;
+        this.username = username;
         this.password = password;
     }
     return LogInUser;

@@ -10,6 +10,3 @@ var SignUpUserModel = (function(){
     }
     return SignUpUserModel;
 })();
-var test = new SignUpUserModel("pesho", "sdasa","dsadsa");
-
-console.log(JSON.stringify(test));
