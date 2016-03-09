@@ -12,12 +12,14 @@ app.userRepoModel = (function(){
         var _this = this;
         var url = this.requester.baseUrl+"user/"+this.requester.appId+"/";
 
-
         this.requester.postRequest(url, signUpUserModel, false)
-            .then(function(suc){
-            console.log(suc)
-        }, function(error){
-                console.log(error);
+            .then(function(){
+                $.notify('User registered successfully!', 'success');
+                var homeController = app.homeController.load();
+                //TODO: Load all posts
+                homeController.getHomePage('#wrapper');
+        }, function(){
+                $.notify("Unsuccessful registration!", 'error');
             }).done();
     };
     UserRepoModel.prototype.login = function(loginUserModel){
@@ -25,14 +27,12 @@ app.userRepoModel = (function(){
         var deffer = Q.defer();
         this.requester.postRequest(url, loginUserModel, false)
             .then(function(success){
-                localStorage["loggedInUser"] =success._kmd.authtoken;
-            },function(error){
-                console.log(error)
+                localStorage["loggedInUser"] = success._kmd.authtoken;
+                $.notify('User logged in successfully!', 'success');
+            },function(){
+                $.notify("Unsuccessful log in!", 'error');
             }).done();
-
-
     };
-
 
     return {
         load:function(){
