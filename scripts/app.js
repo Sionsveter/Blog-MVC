@@ -8,6 +8,7 @@ var app = app ||{};
         var userController = app.userController.load(userRepoModel);
 
 
+
         this.get('#/', function () {
             homeController.getHomePage(selector);
         });

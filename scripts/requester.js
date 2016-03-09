@@ -10,46 +10,122 @@ app.requester = (function () {
         this.baseUrl = "https://baas.kinvey.com/";
     }
 
-    Requester.prototype.makeRequest = function(method,url,data,useSession){
+    Requester.prototype.getRequest = function(url, useSession){
         var token,
-            defer = Q.defer(),
-            options = {
-                method: method,
-                url:url,
-                success:function(data){
-                    defer.resolve(data);
-                },
-                error:function(error){
-                    defer.reject(error);
-                }
-            };
-        if(data!==null){
-            options.data = JSON.stringify(data);
-            options.headers = {
-                'Content-Type':'application/json'
-            };
-        }
+            defer = Q.defer();
 
         if(!useSession){
-            token = this.appId +":" + this.appSecret;
-            options.beforeSend = function(xhr){
-                xhr.setRequestHeader('Authorization','Basic '+ btoa(token))
-            }
+            token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
         }else{
-            token = sessionStorage['sessionAuth'];
-            options.beforeSend = function(xhr){
-                xhr.setRequestHeader('Authorization','Kinvey '+ token)
-            }
+            token = 'Kinvey ' + sessionStorage['sessionAuth'];
         }
 
-        $.ajax(options);
+        $.ajax({
+            method: 'GET',
+            headers: {
+                'Authorization': token
+            },
+            url: url,
+            success:function(data){
+                defer.resolve(data);
+            },
+            error:function(error){
+                defer.reject(error);
+            }
+        });
+
+        return defer.promise;
+    };
+
+    Requester.prototype.postRequest = function(url, data, useSession){
+        var token,
+            defer = Q.defer();
+
+        if(!useSession){
+            token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
+        }else{
+            token = 'Kinvey ' + sessionStorage['sessionAuth'];
+        }
+
+
+        $.ajax({
+            method: 'POST',
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'application/json'
+            },
+            url: url,
+            data: JSON.stringify(data),
+            success:function(data){
+                defer.resolve(data);
+            },
+            error:function(error){
+                defer.reject(error);
+            }
+        });
+
+        return defer.promise;
+    };
+
+    Requester.prototype.deleteRequest = function(url, useSession){
+        var token,
+            defer = Q.defer();
+
+        if(!useSession){
+            token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
+        }else{
+            token = 'Kinvey ' + sessionStorage['sessionAuth'];
+        }
+
+        $.ajax({
+            method: 'DELETE',
+            headers: {
+                'Authorization': token
+            },
+            url: url,
+            success:function(data){
+                defer.resolve(data);
+            },
+            error:function(error){
+                defer.reject(error);
+            }
+        });
+
+        return defer.promise;
+    };
+
+    Requester.prototype.putRequest = function(url, data, useSession){
+        var token,
+            defer = Q.defer();
+
+        if(!useSession){
+            token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
+        }else{
+            token = 'Kinvey ' + sessionStorage['sessionAuth'];
+        }
+
+        $.ajax({
+            method: 'PUT',
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'application/json'
+            },
+            url: url,
+            data: JSON.stringify(data),
+            success:function(data){
+                defer.resolve(data);
+            },
+            error:function(error){
+                defer.reject(error);
+            }
+        });
 
         return defer.promise;
     };
 
     return{
         load: function(){
-            app.requester = new Requester();
+            return new Requester();
         }
     }
 })();

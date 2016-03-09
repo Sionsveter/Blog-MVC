@@ -12,7 +12,7 @@ app.userController = (function(){
         app.loginView.load(selector);
     };
     UserController.prototype.getSignUpPage = function(selector){
-      app.signUpView.load(selector);
+        app.signUpView.load(selector);
     };
     return {
         load:function(userRepoModel){

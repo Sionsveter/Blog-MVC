@@ -12,8 +12,9 @@ app.userRepoModel = (function(){
         var _this = this;
         var url = this.requester.baseUrl+"user/"+this.requester.appId+"/";
 
-        this.requester.makeRequest("POST",url, signUpUserModel, false)
-        de
+        console.log(JSON.stringify(signUpUserModel));
+        this.requester.postRequest(url, signUpUserModel, false);
+
         return deffer.promise;
     };
     return {
