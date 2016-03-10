@@ -12,7 +12,7 @@ app.postModel = (function(){
     }
     PostRepoModel.prototype.addPost = function(postModel){
         var url = app.requester.baseUrl +"appdata/"+this.requester.appId+"/Posts";
-        return this.requester.postRequest(url, postModel, true);
+        return this.requester.postRequest(url, postModel);
 
     }
     return {

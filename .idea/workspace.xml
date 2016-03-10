@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b916e515-d1fe-49aa-9f76-530aea9603d3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/requester.js" afterPath="$PROJECT_DIR$/scripts/requester.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js" afterPath="$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js" afterPath="$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js" />
     </list>
     <ignored path="SionsveterBlog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+              <caret line="27" column="61" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="61" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -115,8 +116,8 @@
       <file leaf-file-name="postRepoModel.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4006734">
-              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.5151515">
+              <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -171,13 +172,13 @@
         <option value="$PROJECT_DIR$/scripts/controllers/postController.js" />
         <option value="$PROJECT_DIR$/scripts/app.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/homeController.js" />
         <option value="$PROJECT_DIR$/templates/allreadyLoggedIn.html" />
         <option value="$PROJECT_DIR$/templates/signupHeader.html" />
         <option value="$PROJECT_DIR$/scripts/controllers/userController.js" />
         <option value="$PROJECT_DIR$/scripts/requester.js" />
         <option value="$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js" />
+        <option value="$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js" />
       </list>
     </option>
   </component>
@@ -470,7 +471,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457618370759</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Requester's queries change">
+      <created>1457619360734</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1457619360734</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -509,7 +516,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Queries for login and sign up fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Queries for login and sign up fixed" />
+    <MESSAGE value="Requester's queries change" />
+    <option name="LAST_COMMIT_MESSAGE" value="Requester's queries change" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -943,7 +951,7 @@
     <entry file="file://$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <caret line="27" column="61" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="61" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
@@ -952,8 +960,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4006734">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.5151515">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
