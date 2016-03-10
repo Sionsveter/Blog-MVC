@@ -8,17 +8,59 @@
     <script src="scripts/lib/q.js"></script>
     <script src="scripts/lib/mustache.js"></script>
     <script src="scripts/lib/notify.js"></script>
+    <link rel="stylesheet" href="css/loginFormStyles.css">
 </head>
 <body>
-    <header>header madafata</header>
-    <ul>
-        <li><a href="#/">Home</a></li>
-        <li><a href="#/user/login">Login</a></li>
-        <li><a href="#/user/signUp">Register</a></li>
+    <header>
+        <div id="wrap">
+            <div id="regbar">
+                <div id="navthing">
+                    <h2><a href="#" id="loginform">Login</a> | <a href="#" id="registerform">Register</a></h2>
+                    <div class="login">
+                        <div class="arrow-up"></div>
+                        <div class="formholder">
+                            <div class="randompad">
+                                <fieldset>
+                                    <label name="email">Email</label>
+                                    <input type="email"/>
+                                    <label name="password">Password</label>
+                                    <input type="password"/>
+                                    <input type="submit" value="Login" />
 
-    </ul>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="signup">
+                        <div class="arrow-up"></div>
+                        <div class="formholder">
+                            <div class="randompad">
+                                <fieldset>
+                                    <label name="email">Username</label>
+                                    <input type="email" />
+                                    <label name="password">Password</label>
+                                    <input type="password" />
+                                    <label name="password-confirm">Confirm Password</label>
+                                    <input type="password" />
+                                    <label name="email">Email</label>
+                                    <input type="email"/>
+                                    <label name="name">Full Name</label>
+                                    <input type="text"/>
+                                    <input type="submit" value="Register" />
+
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/login/toggleLogin.js"></script>
+    </header>
+
     <div id="wrapper"></div>
-    <footer> Footer madafata</footer>
+    <footer></footer>
     <script src="scripts/requester.js"></script>
     <script src="scripts/models/sighUpUserModel.js"></script>
     <script src="scripts/models/loginUserModel.js"></script>
