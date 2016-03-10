@@ -1,10 +1,10 @@
 var app = app || {};
 
-app.loginView = (function() {
+app.allreadyLoggedView = (function() {
     function HomeView(selector) {
         $.ajax({
             method: 'GET',
-            url: 'templates/login.html',
+            url: 'templates/allreadyLoggedIn.html',
             async: false
         }).success(function(template){
             var output = Mustache.render(template);

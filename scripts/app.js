@@ -3,6 +3,7 @@ var app = app ||{};
 (function(){
     app.router = Sammy(function () {
         var selector = '#wrapper';
+        var header = 'header';
         var userRepoModel = app.userRepoModel.load();
         var homeController = app.homeController.load();
         var userController = app.userController.load(userRepoModel);

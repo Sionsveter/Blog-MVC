@@ -8,7 +8,7 @@ app.userController = (function(){
         this.userRepoModel = userRepoModel;
     }
     UserController.prototype.getLoginPage = function(selector) {
-        app.loginView.load(selector);
+        app.allreadyLoggedView.load(selector);
 
         $("#login").click(function () {
             var username = $("#username").val();
