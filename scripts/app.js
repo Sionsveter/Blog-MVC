@@ -5,10 +5,10 @@ var app = app ||{};
         var selector = '#wrapper';
         var header = 'header';
         var userRepoModel = app.userRepoModel.load();
+        var postRepoModel = app.postRepoModel.load();
         var homeController = app.homeController.load();
         var userController = app.userController.load(userRepoModel);
-
-
+        var postController = app.postController.load(postRepoModel);
 
         this.get('#/', function () {
             homeController.getHomePage(selector);
@@ -18,9 +18,9 @@ var app = app ||{};
         });
         this.get('#/user/signUp', function(){
             userController.getSignUpPage(selector);
-        })
+        });
         this.get('#/posts/add', function(){
-
+            postController.addPost(selector);
         })
 
 

@@ -14,10 +14,10 @@ app.requester = (function () {
         var token,
             defer = Q.defer();
 
-        if(localStorage['loggedInUser']){
+        if(!localStorage['loggedInUser']){
             token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
         }else{
-            token = 'Kinvey ' + sessionStorage['loggedInUser'];
+            token = 'Kinvey ' + localStorage['loggedInUser'];
         }
 
         $.ajax({
@@ -41,10 +41,10 @@ app.requester = (function () {
         var token,
             defer = Q.defer();
 
-        if(localStorage['loggedInUser']){
+        if(!localStorage['loggedInUser']){
             token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
         }else{
-            token = 'Kinvey ' + sessionStorage['loggedInUser'];
+            token = 'Kinvey ' + localStorage['loggedInUser'];
         }
 
 
@@ -72,10 +72,10 @@ app.requester = (function () {
         var token,
             defer = Q.defer();
 
-        if(localStorage['loggedInUser']){
+        if(!localStorage['loggedInUser']){
             token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
         }else{
-            token = 'Kinvey ' + sessionStorage['loggedInUser'];
+            token = 'Kinvey ' + localStorage['loggedInUser'];
         }
 
         $.ajax({
@@ -100,10 +100,10 @@ app.requester = (function () {
         var token,
             defer = Q.defer();
 
-        if(localStorage['loggedInUser']){
+        if(!localStorage['loggedInUser']){
             token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
         }else{
-            token = 'Kinvey ' + sessionStorage['loggedInUser'];
+            token = 'Kinvey ' + localStorage['loggedInUser'];
         }
 
         $.ajax({

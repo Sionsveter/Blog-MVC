@@ -4,18 +4,20 @@
 var app = app || {};
 
 app.postController = (function(){
-    function PostController(repomodel){
-        this.repoModel = repomodel;
+    function PostController(repoModel){
+        this.repoModel = repoModel;
     }
     PostController.prototype.addPost = function(selector){
         app.addPostView.load(selector);
         var _this = this;
         $("#addPost").click(function(){
             var title = $("#title").val();
+            var description = $("#description").val();
+            var tags = $("#tags").val();
             var content = $("#content").val();
             var userId = localStorage["userId"];
-            var postModel = new PostModel(title, content, userId);
-            _this.repoModel.addPost(postModel)
+            var postModel = new PostModel(title,description, content, userId);
+            _this.repoModel.addPostRequest(postModel)
                 .then(function(success){
                     $.notify("Post added successfully", "success");
                     //TODO: LOAD ALL POSTS
@@ -25,15 +27,10 @@ app.postController = (function(){
                 });
         })
 
-
-
-
-
-
     };
     return {
-        load:function(repomodel){
-            return new PostController(repomodel);
+        load:function(repoModel){
+            return new PostController(repoModel);
         }
     }
 
