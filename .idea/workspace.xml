@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b916e515-d1fe-49aa-9f76-530aea9603d3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/controllers/homeController.js" afterPath="$PROJECT_DIR$/scripts/controllers/homeController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/controllers/userController.js" afterPath="$PROJECT_DIR$/scripts/controllers/userController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js" afterPath="$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/requester.js" afterPath="$PROJECT_DIR$/scripts/requester.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/allreadyLoggedIn.html" afterPath="$PROJECT_DIR$/templates/allreadyLoggedIn.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/signupHeader.html" afterPath="$PROJECT_DIR$/templates/signupHeader.html" />
     </list>
     <ignored path="SionsveterBlog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="userController.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="userController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/controllers/userController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5714286">
-              <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -117,11 +112,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="postRepoModel.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4006734">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="requester.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/requester.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+              <caret line="115" column="25" selection-start-line="115" selection-start-column="25" selection-end-line="115" selection-end-column="25" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -161,16 +168,16 @@
         <option value="$PROJECT_DIR$/templates/addPost.html" />
         <option value="$PROJECT_DIR$/scripts/views/addPostView.js" />
         <option value="$PROJECT_DIR$/scripts/models/postModel.js" />
-        <option value="$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/postController.js" />
         <option value="$PROJECT_DIR$/scripts/app.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js" />
-        <option value="$PROJECT_DIR$/scripts/requester.js" />
         <option value="$PROJECT_DIR$/scripts/controllers/homeController.js" />
         <option value="$PROJECT_DIR$/templates/allreadyLoggedIn.html" />
         <option value="$PROJECT_DIR$/templates/signupHeader.html" />
         <option value="$PROJECT_DIR$/scripts/controllers/userController.js" />
+        <option value="$PROJECT_DIR$/scripts/requester.js" />
+        <option value="$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js" />
       </list>
     </option>
   </component>
@@ -457,6 +464,13 @@
       <option name="number" value="Default" />
       <updated>1457466500942</updated>
     </task>
+    <task id="LOCAL-00001" summary="Queries for login and sign up fixed">
+      <created>1457618370759</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1457618370759</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -465,6 +479,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -491,6 +506,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Queries for login and sign up fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Queries for login and sign up fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -825,16 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.3076923">
@@ -857,16 +866,6 @@
           <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding>
             <element signature="e#0#43#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/requester.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -921,6 +920,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/requester.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="115" column="25" selection-start-line="115" selection-start-column="25" selection-end-line="115" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/controllers/userController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/models/repoModels/userRepoModel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -931,10 +950,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/controllers/userController.js">
+    <entry file="file://$PROJECT_DIR$/scripts/models/repoModels/postRepoModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5714286">
-          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.4006734">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>

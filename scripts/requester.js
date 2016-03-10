@@ -10,14 +10,14 @@ app.requester = (function () {
         this.baseUrl = "https://baas.kinvey.com/";
     }
 
-    Requester.prototype.getRequest = function(url, useSession){
+    Requester.prototype.getRequest = function(url){
         var token,
             defer = Q.defer();
 
-        if(!useSession){
+        if(localStorage['loggedInUser']){
             token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
         }else{
-            token = 'Kinvey ' + sessionStorage['sessionAuth'];
+            token = 'Kinvey ' + sessionStorage['loggedInUser'];
         }
 
         $.ajax({
@@ -37,14 +37,14 @@ app.requester = (function () {
         return defer.promise;
     };
 
-    Requester.prototype.postRequest = function(url, data, async,useSession){
+    Requester.prototype.postRequest = function(url, data, async){
         var token,
             defer = Q.defer();
 
-        if(!useSession){
+        if(localStorage['loggedInUser']){
             token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
         }else{
-            token = 'Kinvey ' + sessionStorage['sessionAuth'];
+            token = 'Kinvey ' + sessionStorage['loggedInUser'];
         }
 
 
@@ -68,14 +68,14 @@ app.requester = (function () {
         return defer.promise;
     };
 
-    Requester.prototype.deleteRequest = function(url, useSession){
+    Requester.prototype.deleteRequest = function(url, async){
         var token,
             defer = Q.defer();
 
-        if(!useSession){
+        if(localStorage['loggedInUser']){
             token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
         }else{
-            token = 'Kinvey ' + sessionStorage['sessionAuth'];
+            token = 'Kinvey ' + sessionStorage['loggedInUser'];
         }
 
         $.ajax({
@@ -84,6 +84,7 @@ app.requester = (function () {
                 'Authorization': token
             },
             url: url,
+            async: async,
             success:function(data){
                 defer.resolve(data);
             },
@@ -95,14 +96,14 @@ app.requester = (function () {
         return defer.promise;
     };
 
-    Requester.prototype.putRequest = function(url, data, useSession){
+    Requester.prototype.putRequest = function(url, data, async){
         var token,
             defer = Q.defer();
 
-        if(!useSession){
+        if(localStorage['loggedInUser']){
             token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
         }else{
-            token = 'Kinvey ' + sessionStorage['sessionAuth'];
+            token = 'Kinvey ' + sessionStorage['loggedInUser'];
         }
 
         $.ajax({
@@ -112,6 +113,7 @@ app.requester = (function () {
                 'Content-Type': 'application/json'
             },
             url: url,
+            async: async,
             data: JSON.stringify(data),
             success:function(data){
                 defer.resolve(data);
