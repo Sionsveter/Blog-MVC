@@ -18,6 +18,9 @@ var app = app ||{};
         this.get('#/user/signUp', function(){
             userController.getSignUpPage(selector);
         })
+        this.get('#/posts/add', function(){
+
+        })
 
 
     });

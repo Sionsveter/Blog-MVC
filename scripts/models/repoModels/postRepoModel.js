@@ -14,6 +14,10 @@ app.postModel = (function(){
         var url = app.requester.baseUrl +"appdata/"+this.requester.appId+"/Posts";
         return this.requester.postRequest(url, postModel, true);
 
-
+    }
+    return {
+        load:function(){
+            new PostRepoModel();
+        }
     }
 })();

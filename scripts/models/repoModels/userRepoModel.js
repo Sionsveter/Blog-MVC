@@ -28,6 +28,7 @@ app.userRepoModel = (function(){
         this.requester.postRequest(url, loginUserModel, false)
             .then(function(success){
                 localStorage["loggedInUser"] = success._kmd.authtoken;
+                localStorage["userId"] = success._id;
                 $.notify('User logged in successfully!', 'success');
             },function(){
                 $.notify("Unsuccessful log in!", 'error');

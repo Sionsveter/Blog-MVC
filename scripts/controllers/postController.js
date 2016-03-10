@@ -9,6 +9,25 @@ app.postController = (function(){
     }
     PostController.prototype.addPost = function(selector){
         app.addPostView.load(selector);
+        var _this = this;
+        $("#addPost").click(function(){
+            var title = $("#title").val();
+            var content = $("#content").val();
+            var userId = localStorage["userId"];
+            var postModel = new PostModel(title, content, userId);
+            _this.repoModel.addPost(postModel)
+                .then(function(success){
+                    $.notify("Post added successfully", "success");
+                    //TODO: LOAD ALL POSTS
+
+                }, function(error){
+                    $.notify("error","error");
+                });
+        })
+
+
+
+
 
 
     };
