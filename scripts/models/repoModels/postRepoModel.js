@@ -10,7 +10,10 @@ app.postModel = (function(){
             posts:[]
         }
     }
-    PostRepoModel.prototype.getPosts = function(selector){
-        app.loginView.load(selector);
+    PostRepoModel.prototype.addPost = function(postModel){
+        var url = app.requester.baseUrl +"appdata/"+this.requester.appId+"/Posts";
+        return this.requester.postRequest(url, postModel, true);
+
+
     }
 })();
