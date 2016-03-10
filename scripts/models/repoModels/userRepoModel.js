@@ -25,7 +25,7 @@ app.userRepoModel = (function(){
     UserRepoModel.prototype.login = function(loginUserModel){
         var url = this.requester.baseUrl+"user/"+this.requester.appId+"/login";
         var deffer = Q.defer();
-        this.requester.postRequest(url, loginUserModel, false)
+        this.requester.postRequest(url, loginUserModel, false, false)
             .then(function(success){
                 localStorage["loggedInUser"] = success._kmd.authtoken;
                 localStorage["userId"] = success._id;

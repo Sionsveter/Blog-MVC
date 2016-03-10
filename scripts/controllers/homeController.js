@@ -10,6 +10,7 @@ app.homeController = (function(){
     HomeController.prototype.getHomePage = function (selector){
         if(localStorage["loggedInUser"]){
             app.allreadyLoggedView.load('header');
+
         }
         else{
             app.signUpView.load('header');

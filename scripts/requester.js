@@ -37,7 +37,7 @@ app.requester = (function () {
         return defer.promise;
     };
 
-    Requester.prototype.postRequest = function(url, data, useSession){
+    Requester.prototype.postRequest = function(url, data, async,useSession){
         var token,
             defer = Q.defer();
 
@@ -55,6 +55,7 @@ app.requester = (function () {
                 'Content-Type': 'application/json'
             },
             url: url,
+            async: async,
             data: JSON.stringify(data),
             success:function(data){
                 defer.resolve(data);
