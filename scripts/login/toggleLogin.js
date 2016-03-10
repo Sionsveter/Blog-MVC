@@ -18,13 +18,18 @@ $('#registerform').click(function(){
 
 $(document).mouseup(function (e)
 {
-
-
-    if ((!$(".login").is(e.target)||$(".signup").is(e.target))) // ... nor a descendant of the container
+    if (!$(".login").is(e.target) // if the target of the click isn't the container...
+        && $(".login").has(e.target).length === 0) // ... nor a descendant of the container
     {
         $(".login").hide();
-        $(".signup").hide();
         $('#loginform').removeClass('green');
+    }
+
+    if (!$(".signup").is(e.target) // if the target of the click isn't the container...
+        && $(".signup").has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        $(".signup").hide();
         $('#registerform').removeClass('green');
     }
+
 });
