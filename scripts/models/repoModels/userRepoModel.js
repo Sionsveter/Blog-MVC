@@ -34,6 +34,11 @@ app.userRepoModel = (function(){
                 $.notify("Unsuccessful log in!", 'error');
             }).done();
     };
+    UserRepoModel.prototype.logout = function(){
+        delete localStorage.loggedInUser;
+        delete localStorage.userId;
+        $.notify('User logged out successfully!', 'success');
+    };
 
     return {
         load:function(){

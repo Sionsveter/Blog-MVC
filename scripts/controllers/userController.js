@@ -9,13 +9,19 @@ app.userController = (function(){
     }
     UserController.prototype.getLoginPage = function() {
         var _this = this;
+        console.log($("#login-button"));
         $("#login-button").click(function () {
             var username = $("#username-login").val();
             var password = $("#password-login").val();
             var loginUserModel = new LogInUser(username, password);
             console.log($("#username").val());
             _this.userRepoModel.login(loginUserModel);
-            console.log('clicked');
+        });
+    };
+    UserController.prototype.getLogoutPage = function() {
+        var _this = this;
+        $("#user-control-logout").click(function () {
+            _this.userRepoModel.logout();
         });
     };
     UserController.prototype.getSignUpPage = function() {

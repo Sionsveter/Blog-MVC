@@ -13,12 +13,21 @@ var app = app ||{};
         this.get('#/', function () {
             homeController.getHomePage(selector);
         });
-        this.get('#/user/login', function(){
-            userController.getLoginPage(selector);
-        });
-        this.get('#/user/signUp', function(){
-            userController.getSignUpPage(selector);
-        });
+
+        if(localStorage["loggedInUser"]){
+            this.get('#/user/options', function(){
+                userController.getLogoutPage(selector);
+            });
+        }
+        else{
+            this.get('#/user/login', function(){
+                userController.getLoginPage(selector);
+            });
+            this.get('#/user/signUp', function(){
+                userController.getSignUpPage(selector);
+            });
+        }
+
         this.get('#/posts/add', function(){
             postController.addPost(selector);
         });
