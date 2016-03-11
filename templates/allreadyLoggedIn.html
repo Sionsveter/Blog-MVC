@@ -1,8 +1,22 @@
 <div id="wrap">
     <div id="regbar">
         <div id="navthing">
-            <h2><a href="#" id="loginform">Profile</a> | <a href="#" id="registerform">Home</a></h2>
+            <h2><a href="#" id="user-options-btn">Profile</a> | <a href="#" id="home-btn">Home</a></h2>
+
+            <div class="user-options">
+                <div class="arrow-up"></div>
+                <div class="formholder">
+                    <div class="randompad">
+                        <fieldset>
+                            <button id="user-control-edit-profile">Edit Profile</button>
+                            <button id="user-control-logout">Log out</button>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
-<script src="scripts/login/toggleLogin.js"></script>
+<script src="scripts/userOptions/toggleUserOptions.js"></script>
+<script src="scripts/userOptions/userLogout.js"></script>

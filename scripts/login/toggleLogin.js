@@ -1,7 +1,7 @@
-$('input[type="submit"]').mousedown(function(){
+$('button').mousedown(function(){
   $(this).css('background', '#2ecc71');
 });
-$('input[type="submit"]').mouseup(function(){
+$('button').mouseup(function(){
   $(this).css('background', '#1abc9c');
 });
 
