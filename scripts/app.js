@@ -1,14 +1,25 @@
 var app = app ||{};
 
+
+window.onload = function() {
+    if (localStorage["loggedInUser"]) {
+        app.allreadyLoggedView.load('header');
+    }
+    else {
+        app.signUpView.load('header');
+    }
+    // TODO : load footer on window load
+};
+
 (function(){
     app.router = Sammy(function () {
-        var selector = '#wrapper';
-        var header = 'header';
-        var userRepoModel = app.userRepoModel.load();
-        var postRepoModel = app.postRepoModel.load();
-        var homeController = app.homeController.load();
-        var userController = app.userController.load(userRepoModel);
-        var postController = app.postController.load(postRepoModel);
+        var selector = '#wrapper',
+            header = 'header',
+            userRepoModel = app.userRepoModel.load(),
+            postRepoModel = app.postRepoModel.load(),
+            homeController = app.homeController.load(),
+            userController = app.userController.load(userRepoModel),
+            postController = app.postController.load(postRepoModel);
 
         this.get('#/', function () {
             homeController.getHomePage(selector);
@@ -35,11 +46,8 @@ var app = app ||{};
             postController.loadAllPosts(selector);
         });
         this.get('#posts/:postId', function(){
-
             postController.loadPostById(selector, this.params['postId']);
         })
-
-
     });
 
     app.router.run('#/');
