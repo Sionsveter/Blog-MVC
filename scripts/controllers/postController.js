@@ -16,10 +16,11 @@ app.postController = (function(){
             var tags = $("#tags").val();
             var content = $("#content").val();
             var userId = localStorage["userId"];
-            var postModel = new PostModel(title,description, content, userId);
+            var postModel = new PostBindingModel(title,description, content, userId);
             _this.repoModel.addPostRequest(postModel)
                 .then(function(success){
                     $.notify("Post added successfully", "success");
+
                     //TODO: LOAD ALL POSTS
 
                 }, function(error){
@@ -28,6 +29,20 @@ app.postController = (function(){
         })
 
     };
+    PostController.prototype.loadAllPosts = function(selector){
+        this.repoModel.getAllPosts().then(function(data){
+
+            app.allPostsView.load(selector, data);
+        });
+    };
+    PostController.prototype.loadPostById = function(selector, id){
+        this.repoModel.getPostById(id).then(function(data){
+            console.log(data[0]);
+           app.postView.load(selector,data[0]);
+        });
+
+    };
+
     return {
         load:function(repoModel){
             return new PostController(repoModel);

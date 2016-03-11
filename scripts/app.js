@@ -21,6 +21,13 @@ var app = app ||{};
         });
         this.get('#/posts/add', function(){
             postController.addPost(selector);
+        });
+        this.get('#/posts/all',function(){
+            postController.loadAllPosts(selector);
+        });
+        this.get('#posts/:postId', function(){
+
+            postController.loadPostById(selector, this.params['postId']);
         })
 
 
