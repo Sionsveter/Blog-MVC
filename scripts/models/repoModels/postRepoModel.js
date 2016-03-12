@@ -18,6 +18,14 @@ app.postRepoModel = (function(){
         return this.requester.postRequest(this.url, postModel);
 
     };
+
+    //PostRepoModel.prototype.addCommentRequest = function(postModel){
+    //
+    //
+    //    return this.requester.commentRequest(this.url, postModel);
+    //
+    //};
+
     PostRepoModel.prototype.getAllPosts = function(){
         this.postRepo["posts"].length = 0;
         var deffer = Q.defer();

@@ -18,8 +18,11 @@ window.onload = function() {
             userRepoModel = app.userRepoModel.load(),
             postRepoModel = app.postRepoModel.load(),
             homeController = app.homeController.load(),
+            //commentController = app.commentController.load(),
             userController = app.userController.load(userRepoModel),
             postController = app.postController.load(postRepoModel);
+
+
 
         this.get('#/', function () {
             homeController.getHomePage(selector);

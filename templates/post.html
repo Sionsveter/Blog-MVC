@@ -3,3 +3,35 @@
 <h1>{{title}}</h1>
 <h2>{{description}}</h2>
 <h3>{{content}}</h3>
+
+<br/>
+<div id="viewComments">
+
+<p>{{commentsContent}}</p>
+<p>No Comments yet</p>
+</div>
+
+<br/>
+
+<div id="addComment">
+<p>You can comment on this:</p>
+    <label for="commenterName">Name:</label>
+    <input type="text" id="commenterName"/>
+    <br/>
+    <br/>
+
+    <label for="commenterEmail">Email:</label>
+    <input type="text"  id="commenterEmail"/>
+    <br/>
+    <br/>
+
+    <label for="comment">Comment:</label>
+    <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+    <br/>
+    <br/>
+
+    <button id="addPost">Add comment</button>
+
+
+
+</div>
