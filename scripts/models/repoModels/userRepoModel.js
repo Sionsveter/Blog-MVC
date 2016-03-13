@@ -30,6 +30,7 @@ app.userRepoModel = (function(){
                 localStorage["loggedInUser"] = success._kmd.authtoken;
                 localStorage["userId"] = success._id;
                 $.notify('User logged in successfully!', 'success');
+                window.onload();//reloads the header on login
             },function(){
                 $.notify("Unsuccessful log in!", 'error');
             }).done();
@@ -38,6 +39,7 @@ app.userRepoModel = (function(){
         delete localStorage.loggedInUser;
         delete localStorage.userId;
         $.notify('User logged out successfully!', 'success');
+        window.onload();//reloads the header on logout
     };
 
     return {
