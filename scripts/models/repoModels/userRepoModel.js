@@ -11,16 +11,18 @@ app.userRepoModel = (function(){
 
         var _this = this;
         var url = this.requester.baseUrl+"user/"+this.requester.appId+"/";
-
+        var deffer = Q.defer();
         this.requester.postRequest(url, signUpUserModel,false)
-            .then(function(){
+            .then(function(success){
                 $.notify('User registered successfully!', 'success');
-                var homeController = app.homeController.load();
-                //TODO: Load all posts
-                homeController.getHomePage('#wrapper');
-        }, function(){
+                deffer.resolve(success)
+
+
+        }, function(error){
                 $.notify("Unsuccessful registration!", 'error');
-            }).done();
+                deffer.reject(error);
+            });
+        return deffer.promise;
     };
     UserRepoModel.prototype.login = function(loginUserModel){
         var url = this.requester.baseUrl+"user/"+this.requester.appId+"/login";
@@ -30,13 +32,17 @@ app.userRepoModel = (function(){
                 localStorage["loggedInUser"] = success._kmd.authtoken;
                 localStorage["userId"] = success._id;
                 localStorage["username"] =success.username;
-                $.notify('User logged in successfully!', 'success');
+                deffer.resolve(success);
                 window.onload();//reloads the header on login
-            },function(){
+            },function(error){
+                deffer.reject(error);
                 $.notify("Unsuccessful log in!", 'error');
-            }).done();
+
+            });
+        return deffer.promise;
     };
     UserRepoModel.prototype.logout = function(){
+        //TODO MAKE REQUEST FOR LOGOUT!!!
         localStorage.clear();
         $.notify('User logged out successfully!', 'success');
         window.onload();//reloads the header on logout

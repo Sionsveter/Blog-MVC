@@ -15,7 +15,9 @@ app.userController = (function(){
             var password = $("#password-login").val();
             var loginUserModel = new LogInUser(username, password);
             console.log($("#username").val());
-            _this.userRepoModel.login(loginUserModel);
+            _this.userRepoModel.login(loginUserModel).then(function(){
+                $(location).attr("href","#/posts/all");
+            });
         });
     };
     UserController.prototype.getLogoutPage = function() {
@@ -31,7 +33,11 @@ app.userController = (function(){
                 var password = $("#password-signup").val();
                 var email = $("#email-signup").val();
                 var userModel = new SignUpUserModel(username, email, password);
-                _this.userRepoModel.signUp(userModel);
+                _this.userRepoModel.signUp(userModel).then(function(success){
+                    $(location).attr("href","#/posts/all")
+                }, function(error){
+                    //TODO : SHOW VALIDATION MESSAGES
+                });
             });
     };
     return {
