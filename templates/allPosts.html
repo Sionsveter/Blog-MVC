@@ -1,7 +1,16 @@
-
+<label>Search posts by tags:</label>
+<select>
+    {{#tags}}
+    <option value="{{name}}">{{name}}</option>
+    {{/tags}}
+</select>
+<button id="search-by-tags-button">Search</button>
 {{#posts}}
     <a href="#posts/{{id}}">
         <h1><strong>{{title}}</strong></h1>
         <h3>{{description}}</h3>
+        {{#tags}}
+        <h5>{{name}}</h5>
+        {{/tags}}
     </a>
 {{/posts}}
