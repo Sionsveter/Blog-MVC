@@ -6,7 +6,7 @@ var app = app ||{};
 app.tagsRepoModel = (function(){
     function TagsRepoModel(){
         this.requester = app.requester.load();
-        this.url = this.requester.baseUrl +"appdata/"+this.requester.appId+"/Tags/";
+        this.url = this.requester.baseUrl + "appdata/" + this.requester.appId + "/Tags/";
         this.tagsRepo = {
             tags:[]
         };
@@ -39,63 +39,85 @@ app.tagsRepoModel = (function(){
 
     TagsRepoModel.prototype.getAllTags = function(){
         this.tagsRepo["tags"] = [];
-        var deffer = Q.defer();
+        var defer = Q.defer();
         var _this = this;
         this.requester.getRequest(this.url)
             .then(function(data){
                 data.forEach(function(tag){
-                    var tagModel = new TagBindingModel(tag._id, tag.posts);
+                    var tagModel = new TagBindingModel(tag.name, tag.posts);
                     _this.tagsRepo["tags"].push(tagModel);
                 });
-                deffer.resolve(_this.tagsRepo);
+                defer.resolve(_this.tagsRepo.tags);
             },function(error){
-                deffer.reject(error);
+                defer.reject(error);
             });
 
-        return deffer.promise;
+        return defer.promise;
+    };
+
+    TagsRepoModel.prototype.getAllRelatedPosts = function(tagName) {
+        var _this = this,
+            postViewModels = [];
+
+        this.getTagByName(tagName).then(function (data) {
+                var tag = data[0],
+                    postsUrl = _this.requester.baseUrl + "appdata/" + _this.requester.appId + "/Posts/";
+
+                tag.posts.forEach(function (relatedPost) {
+                    _this.requester.getRequest(postsUrl + '?query={"_id":"' + relatedPost._id + '"}', false)
+                        .then(function (post) {
+                            var currentPost = post[0];
+                            var postViewModel = new PostViewModel(currentPost._id, currentPost.title, currentPost.description,
+                                currentPost.content, currentPost.comments, currentPost.tags, currentPost.author.username, currentPost.postDate);
+                            postViewModels.push(postViewModel);
+                        });
+                });
+            });
+        console.log(postViewModels);
+        return postViewModels;
     };
 
     TagsRepoModel.prototype.updateTagByName = function(id, updatedTag){
-        var deffer = Q.defer();
+        var defer = Q.defer();
         console.log(this.url + id);
         this.requester.putRequest(this.url + id, updatedTag, false)
             .then(function(data) {
                 console.log(data);
-                    deffer.resolve(data);
+                    defer.resolve(data);
             },
                 function(error){
-                    deffer.reject(error);
+                    defer.reject(error);
                 }
             );
 
-        return deffer.promise;
+        return defer.promise;
     };
 
     TagsRepoModel.prototype.getTagByName = function(name){
-        var deffer = Q.defer();
+        var defer = Q.defer();
 
         this.requester.getRequest(this.url+'?query={"name":"' + name + '"}', false)
             .then(function(data){
-                    deffer.resolve(data)},
+                    defer.resolve(data)},
                 function(error){
-                    deffer.reject(error);
+                    defer.reject(error);
                 }
             );
 
-        return deffer.promise;
+        return defer.promise;
     };
 
     TagsRepoModel.prototype.getTagById = function(id){
-        var deffer = Q.defer();
+        var defer = Q.defer();
         this.requester.getRequest(this.url+'?query={"_id":"'+id+'"}')
             .then(function(data){
-                    deffer.resolve(data)},
+                    defer.resolve(data)},
                 function(error){
-                    deffer.reject(error);
+                    defer.reject(error);
                 }
             );
 
-        return deffer.promise;
+        return defer.promise;
     };
     return {
         load:function(){

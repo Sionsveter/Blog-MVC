@@ -43,7 +43,7 @@ app.postRepoModel = (function(){
                     _this.postRepo["posts"].push(postViewModel);
 
                 });
-                deffer.resolve(_this.postRepo);
+                deffer.resolve(_this.postRepo["posts"]);
 
             },function(error){
                 deffer.reject(error);

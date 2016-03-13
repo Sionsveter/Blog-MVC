@@ -19,7 +19,7 @@ window.onload = function() {
             homeController = app.homeController.load(),
             //commentController = app.commentController.load(),
             userController = app.userController.load(userRepoModel),
-            tagsRepoModel = app.tagsRepoModel.load();
+            tagsRepoModel = app.tagsRepoModel.load(),
             postController = app.postController.load(postRepoModel, tagsRepoModel);
 
         this.get('#/', function () {
@@ -40,9 +40,13 @@ window.onload = function() {
         this.get('#/posts/all',function(){
             postController.loadAllPosts(selector);
         });
+        this.get('#/postsByTagName/:tagName', function(){
+            postController.loadPostsByTagName(selector, this.params['tagName']);
+        });
+
         this.get('#posts/:postId', function(){
             postController.loadPostById(selector, this.params['postId']);
-        })
+        });
     });
 
     app.router.run('#/');

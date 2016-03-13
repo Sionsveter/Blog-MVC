@@ -18,14 +18,12 @@ app.postController = (function(){
             var content = $("#content").val();
             var userId = localStorage["userId"];
             var username = localStorage["username"];
-            var tagsArray = $("#tags").val().split(/\s+/);
+            var tagsArray = $("#tags").val().trim().split(/\s+/);
             console.log(tagsArray);
             var postModel = new PostBindingModel(title,description, content, userId, username);
-            for (var tag in tagsArray) {
-                if(tag){
-                    postModel.tags.push(tagsArray[tag]);
-                }
-            }
+            tagsArray.forEach(function(tag){
+                postModel.tags.push(tag);
+            });
             _this.repoModel.addPostRequest(postModel)
                 .then(function(data){
                     $.notify("Post added successfully", "success");
@@ -44,14 +42,30 @@ app.postController = (function(){
 
     };
     PostController.prototype.loadAllPosts = function(selector){
-        this.repoModel.getAllPosts().then(function(data){
-
-            app.allPostsView.load(selector, data);
+        var _this = this;
+        this.repoModel.getAllPosts().then(function(posts){
+            _this.tagsRepoModel.getAllTags().then(function(tags){
+                var data = {
+                    "posts": posts,
+                    "tags": tags
+                };
+                app.allPostsView.load(selector, data);
+                $('#search-by-tags-button').click(function(){
+                    var selectedTagName = $('#search-tag').val();
+                    _this.loadPostsByTagName(selector, selectedTagName);
+                    //$(location).attr('href','#/postsByTagName/' + selectedTagName);
+                })
+            })
         });
+    };
+    PostController.prototype.loadPostsByTagName = function(selector, selectedTagName){
+        var relatedPosts = this.tagsRepoModel.getAllRelatedPosts(selectedTagName);
+        console.log('second');
+        console.log(relatedPosts);
+        app.postsByTagName.load(selector, relatedPosts);
     };
     PostController.prototype.loadPostById = function(selector, id){
         this.repoModel.getPostById(id).then(function(data){
-            console.log(data);
            app.postView.load(selector,data);
         });
 
