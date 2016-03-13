@@ -1,6 +1,5 @@
 var app = app ||{};
 
-
 window.onload = function() {
     if (localStorage["loggedInUser"]) {
         app.allreadyLoggedView.load('header');
@@ -22,26 +21,18 @@ window.onload = function() {
             userController = app.userController.load(userRepoModel),
             postController = app.postController.load(postRepoModel);
 
-
-
         this.get('#/', function () {
             homeController.getHomePage(selector);
         });
-
-        if(localStorage["loggedInUser"]){
-            this.get('#/user/options', function(){
-                userController.getLogoutPage(selector);
-            });
-        }
-        else{
-            this.get('#/user/login', function(){
-                userController.getLoginPage(selector);
-            });
-            this.get('#/user/signUp', function(){
-                userController.getSignUpPage(selector);
-            });
-        }
-
+        this.get('#/user/options', function(){
+            userController.getLogoutPage(selector);
+        });
+        this.get('#/user/login', function(){
+            userController.getLoginPage(selector);
+        });
+        this.get('#/user/signUp', function(){
+            userController.getSignUpPage(selector);
+        });
         this.get('#/posts/add', function(){
             postController.addPost(selector);
         });
