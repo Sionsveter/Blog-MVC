@@ -17,12 +17,13 @@ app.postController = (function(){
             var content = $("#content").val();
             var userId = localStorage["userId"];
             var username = localStorage["username"];
-            var tagsArray = $("#tags").val().split(/\s./);
+            var tagsArray = $("#tags").val().split(/\s+/);
+            console.log(tagsArray);
             var postModel = new PostBindingModel(title,description, content, userId, username);
             for (var tag in tagsArray) {
-                postModel.tags.push(tagsArray[tag]);
-
-
+                if(tag){
+                    postModel.tags.push(tagsArray[tag]);
+                }
             }
             _this.repoModel.addPostRequest(postModel)
                 .then(function(success){

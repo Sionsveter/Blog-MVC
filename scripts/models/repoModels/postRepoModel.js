@@ -8,15 +8,32 @@ app.postRepoModel = (function(){
 
         this.requester = app.requester.load();
         this.url = this.requester.baseUrl +"appdata/"+this.requester.appId+"/Posts/";
+        this.tagsRepoModel = app.tagsRepoModel.load();
         this.postRepo = {
             posts:[]
         }
     }
     PostRepoModel.prototype.addPostRequest = function(postModel){
-
-
-        return this.requester.postRequest(this.url, postModel);
-
+        var _this = this,
+            deffer = Q.defer();
+        this.requester.postRequest(this.url, postModel).then(function(data){
+            var postId = data._id;
+            var tags = data.tags;
+            tags.forEach(function(tagName){
+                if(tagName){
+                    _this.tagsRepoModel.addTagRequest(postId,tagName).then(function(data){
+                            console.log(data);
+                            $.notify("Tag successfully added!", "success");
+                            deffer.resolve(data);
+                        },
+                        function(error){
+                            $.notify("Tag unsuccessful added!", "error");
+                            deffer.reject(error);
+                        });
+                }
+            })
+        });
+        return deffer.promise;
     };
 
     //PostRepoModel.prototype.addCommentRequest = function(postModel){
