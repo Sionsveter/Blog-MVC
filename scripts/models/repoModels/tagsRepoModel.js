@@ -25,11 +25,11 @@ app.tagsRepoModel = (function(){
             existingTag = data[0];
             if(existingTag){
                 existingTag.posts.push(postRelation);
-                _this.updateTagByName(existingTag._id, existingTag);
+                _this.updateTagByName(existingTag._id, existingTag).done();
             }
             else{
                 var tagModel = new TagBindingModel(tagName,[postRelation]);
-                return _this.requester.postRequest(_this.url, tagModel, false);
+                return _this.requester.postRequest(_this.url, tagModel, false).done();
             }
         });
 
@@ -61,7 +61,7 @@ app.tagsRepoModel = (function(){
         this.requester.putRequest(this.url + id, updatedTag, false)
             .then(function(data) {
                 console.log(data);
-                    deffer.resolve(error)
+                    deffer.resolve(data);
             },
                 function(error){
                     deffer.reject(error);

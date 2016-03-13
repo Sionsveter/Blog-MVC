@@ -4,8 +4,9 @@
 var app = app || {};
 
 app.postController = (function(){
-    function PostController(repoModel){
+    function PostController(repoModel, tagsRepoModel){
         this.repoModel = repoModel;
+        this.tagsRepoModel = tagsRepoModel;
     }
     PostController.prototype.addPost = function(selector){
         app.addPostView.load(selector);
@@ -26,13 +27,18 @@ app.postController = (function(){
                 }
             }
             _this.repoModel.addPostRequest(postModel)
-                .then(function(success){
+                .then(function(data){
                     $.notify("Post added successfully", "success");
+                        var postId = data._id,
+                            tags = data.tags;
+                        tags.forEach(function(tagName) {
+                            if (tagName) {
+                                _this.tagsRepoModel.addTagRequest(postId, tagName);
+                            }
+                        });
                     $(location).attr("href","#/posts/all");
-
-
-                }, function(error){
-                    $.notify("error","error");
+                },function(error){
+                    $.notify("Post isn't added", "error");
                 });
         })
 
@@ -52,8 +58,8 @@ app.postController = (function(){
     };
 
     return {
-        load:function(repoModel){
-            return new PostController(repoModel);
+        load:function(repoModel, tagsRepoModel){
+            return new PostController(repoModel, tagsRepoModel);
         }
     }
 

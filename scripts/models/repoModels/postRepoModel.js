@@ -17,21 +17,9 @@ app.postRepoModel = (function(){
         var _this = this,
             deffer = Q.defer();
         this.requester.postRequest(this.url, postModel).then(function(data){
-            var postId = data._id;
-            var tags = data.tags;
-            tags.forEach(function(tagName){
-                if(tagName){
-                    _this.tagsRepoModel.addTagRequest(postId,tagName).then(function(data){
-                            console.log(data);
-                            $.notify("Tag successfully added!", "success");
-                            deffer.resolve(data);
-                        },
-                        function(error){
-                            $.notify("Tag unsuccessful added!", "error");
-                            deffer.reject(error);
-                        });
-                }
-            })
+            deffer.resolve(data);
+        },function(error){
+            deffer.reject(error);
         });
         return deffer.promise;
     };

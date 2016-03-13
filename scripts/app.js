@@ -19,7 +19,8 @@ window.onload = function() {
             homeController = app.homeController.load(),
             //commentController = app.commentController.load(),
             userController = app.userController.load(userRepoModel),
-            postController = app.postController.load(postRepoModel);
+            tagsRepoModel = app.tagsRepoModel.load();
+            postController = app.postController.load(postRepoModel, tagsRepoModel);
 
         this.get('#/', function () {
             homeController.getHomePage(selector);
