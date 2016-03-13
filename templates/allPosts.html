@@ -6,9 +6,10 @@
 </select>
 <button id="search-by-tags-button">Search</button>
 {{#posts}}
-    <a href="#posts/{{id}}">
+    <a href="#posts/{{postId}}">
         <h1><strong>{{title}}</strong></h1>
         <h3>{{description}}</h3>
+        <h3> Posted on {{postedOn}} by {{author}}</h3>
         {{#tags}}
         <h5>{{name}}</h5>
         {{/tags}}

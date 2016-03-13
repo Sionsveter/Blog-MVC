@@ -29,6 +29,7 @@ app.userRepoModel = (function(){
             .then(function(success){
                 localStorage["loggedInUser"] = success._kmd.authtoken;
                 localStorage["userId"] = success._id;
+                localStorage["username"] =success.username;
                 $.notify('User logged in successfully!', 'success');
                 window.onload();//reloads the header on login
             },function(){
@@ -36,8 +37,7 @@ app.userRepoModel = (function(){
             }).done();
     };
     UserRepoModel.prototype.logout = function(){
-        delete localStorage.loggedInUser;
-        delete localStorage.userId;
+        localStorage.clear();
         $.notify('User logged out successfully!', 'success');
         window.onload();//reloads the header on logout
     };

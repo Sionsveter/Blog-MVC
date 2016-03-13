@@ -33,14 +33,17 @@ app.postRepoModel = (function(){
         this.requester.getRequest(this.url)
             .then(function(data){
                 data.forEach(function(post){
-                    var postViewModel = new PostViewModel(post._id, post.title, post.description);
+                    var postViewModel = new PostViewModel(post._id, post.title, post.description,
+                        post.content, post.comments, post.tags, post.author.username, post.postDate);
                     _this.postRepo["posts"].push(postViewModel);
+
                 });
                 deffer.resolve(_this.postRepo);
 
             },function(error){
                 deffer.reject(error);
             });
+        console.log(this.postRepo);
         return deffer.promise;
     };
     PostRepoModel.prototype.getPostById = function(id){
@@ -49,7 +52,8 @@ app.postRepoModel = (function(){
         var _this= this;
         this.requester.getRequest(this.url+'?query={"_id":"'+id+'"}')
             .then(function(data){
-                deffer.resolve(data)},
+                var postViewModel = new PostViewModel(data[0]._id);
+                deffer.resolve(data[0])},
                 function(error){
                     deffer.reject(error);
                 }
