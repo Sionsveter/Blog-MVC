@@ -48,9 +48,10 @@ app.postRepoModel = (function(){
             },function(error){
                 deffer.reject(error);
             });
-        console.log(this.postRepo);
         return deffer.promise;
     };
+
+
     PostRepoModel.prototype.getPostById = function(id){
         var deffer = Q.defer();
 

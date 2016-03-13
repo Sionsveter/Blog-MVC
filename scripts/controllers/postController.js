@@ -52,17 +52,23 @@ app.postController = (function(){
                 app.allPostsView.load(selector, data);
                 $('#search-by-tags-button').click(function(){
                     var selectedTagName = $('#search-tag').val();
-                    _this.loadPostsByTagName(selector, selectedTagName);
-                    //$(location).attr('href','#/postsByTagName/' + selectedTagName);
+                    $(location).attr("href","#/postsByTagName/" + selectedTagName);
                 })
             })
         });
     };
     PostController.prototype.loadPostsByTagName = function(selector, selectedTagName){
-        var relatedPosts = this.tagsRepoModel.getAllRelatedPosts(selectedTagName);
-        console.log('second');
-        console.log(relatedPosts);
-        app.postsByTagName.load(selector, relatedPosts);
+        var neededPosts = [];
+            this.repoModel.getAllPosts().then(function(posts){
+                    neededPosts = posts.filter(function(post){
+                    return post.tags.contains(selectedTagName);
+                });
+
+                var obj = {
+                    "posts": neededPosts
+                };
+                app.postsByTagName.load(selector, obj);
+            });
     };
     PostController.prototype.loadPostById = function(selector, id){
         this.repoModel.getPostById(id).then(function(data){

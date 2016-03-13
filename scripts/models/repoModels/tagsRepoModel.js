@@ -55,27 +55,7 @@ app.tagsRepoModel = (function(){
         return defer.promise;
     };
 
-    TagsRepoModel.prototype.getAllRelatedPosts = function(tagName) {
-        var _this = this,
-            postViewModels = [];
 
-        this.getTagByName(tagName).then(function (data) {
-                var tag = data[0],
-                    postsUrl = _this.requester.baseUrl + "appdata/" + _this.requester.appId + "/Posts/";
-
-                tag.posts.forEach(function (relatedPost) {
-                    _this.requester.getRequest(postsUrl + '?query={"_id":"' + relatedPost._id + '"}', false)
-                        .then(function (post) {
-                            var currentPost = post[0];
-                            var postViewModel = new PostViewModel(currentPost._id, currentPost.title, currentPost.description,
-                                currentPost.content, currentPost.comments, currentPost.tags, currentPost.author.username, currentPost.postDate);
-                            postViewModels.push(postViewModel);
-                        });
-                });
-            });
-        console.log(postViewModels);
-        return postViewModels;
-    };
 
     TagsRepoModel.prototype.updateTagByName = function(id, updatedTag){
         var defer = Q.defer();
