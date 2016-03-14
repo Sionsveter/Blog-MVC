@@ -59,11 +59,16 @@ app.postRepoModel = (function(){
         this.requester.getRequest(this.url+'?query={"_id":"'+id+'"}')
             .then(function(data){
                 var post = data[0];
-                console.log(data[0]);
+
+
                 var postViewModel = new PostViewModel(post._id, post.title, post.description,
                     post.content, post.comments, post.tags, post.author, post.postDate, post.views);
                 postViewModel.views++;
-                console.log(postViewModel);
+                //console.log(postViewModel);
+                console.log(post.author);
+                _this.requester.putRequest(_this.url+postViewModel.postId, postViewModel, false, postViewModel.author.username,postViewModel.author.posterPass)
+                    .then(function(data){console.log(data)});
+
 
                 //_this.requester.putRequest(_this.url + "" + id, postViewModel, false).then(function(data){console.log(data)}, function(error){
                 //    console.log(error);

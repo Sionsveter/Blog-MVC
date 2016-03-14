@@ -6,6 +6,7 @@ var SignUpUserModel = (function(){
         this.setUsername(username);
         this.setPassword(password);
         this.setEmail(email);
+        this.passwordForPutRequests = password;
 
 
     }

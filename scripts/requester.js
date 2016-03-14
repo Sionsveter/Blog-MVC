@@ -97,15 +97,11 @@ app.requester = (function () {
         return defer.promise;
     };
 
-    Requester.prototype.putRequest = function(url, data, async){
+    Requester.prototype.putRequest = function(url, data, async, username, password){
         var token,
             defer = Q.defer();
+            token = 'Kinvey ' + btoa(username+":"+password);
 
-        if(!localStorage['loggedInUser']){
-            token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
-        }else{
-            token = 'Kinvey ' + localStorage['loggedInUser'];
-        }
 
         $.ajax({
             method: 'PUT',

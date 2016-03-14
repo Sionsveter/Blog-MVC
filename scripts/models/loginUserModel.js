@@ -5,6 +5,7 @@ var LogInUser = (function(){
     function LogInUser(username, password){
         this.username = username;
         this.password = password;
+        this.passwordForPutReqiests = password;
     }
     return LogInUser;
 })();

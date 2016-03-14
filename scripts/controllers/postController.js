@@ -18,36 +18,41 @@ app.postController = (function(){
             var content = $("#content").val();
             var userId = localStorage["userId"];
             var username = localStorage["username"];
-
-            var tagsArray = $("#tags").val().trim().split(/\s+/);
-            var postModel = new PostBindingModel(title,description, content, userId, username);
-            tagsArray.forEach(function(tag){
-                if(!tag || /^\s*$/.test(tag)){
-                    throw new Error("Tags cannot be empty.");
-                }
-                postModel.tags.push(tag);
-            });
-            _this.repoModel.addPostRequest(postModel)
+            var requester = app.requester.load();
+            console.log(requester.baseUrl+"user/"+requester.appId+"/"+userId);
+            requester.getRequest(requester.baseUrl+"user/"+requester.appId+"/"+userId)
                 .then(function(data){
-                    $.notify("Post added successfully", "success");
-                        var postId = data._id,
-                            tags = data.tags;
-                        tags.forEach(function(tagName) {
-                            if (tagName) {
-                                _this.tagsRepoModel.addTagRequest(postId, tagName);
-                            }
-                        });
-                    $(location).attr("href","#/posts/all");
-                },function(error){
-                    $.notify("Post isn't added", "error");
+
+                    var tagsArray = $("#tags").val().trim().split(/\s+/);
+                    var postModel = new PostBindingModel(title,description, content, userId, username, data.passwordForPutRequests);
+
+                    tagsArray.forEach(function(tag){
+                        if(!tag || /^\s*$/.test(tag)){
+                            throw new Error("Tags cannot be empty.");
+                        }
+                        postModel.tags.push(tag);
+                        _this.repoModel.addPostRequest(postModel)
+                            .then(function(data){
+                                $.notify("Post added successfully", "success");
+                               var postId = data._id,
+                                    tags = data.tags;
+                                tags.forEach(function(tagName) {
+                                    if (tagName) {
+                                        _this.tagsRepoModel.addTagRequest(postId, tagName);
+                                    }
+                                });
+                                $(location).attr("href","#/posts/all");
+                            },function(error){
+                                $.notify("Post isn't added", "error");
+                            });
+                    });
                 });
         })
-
     };
     PostController.prototype.loadAllPosts = function(selector){
         var _this = this;
         this.repoModel.getAllPosts().then(function(posts){
-            console.log(posts);
+           // console.log(posts);
             _this.tagsRepoModel.getAllTags().then(function(tags){
                 var data = {
                     "posts": posts,

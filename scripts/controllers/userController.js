@@ -13,10 +13,10 @@ app.userController = (function(){
         $("#login-button").click(function () {
             var username = $("#username-login").val();
             var password = $("#password-login").val();
-            var loginUserModel = new LogInUser(username, password);
+            var loginUserModel = new LogInUser(username, password, password);
 
             _this.userRepoModel.login(loginUserModel).then(function(data){
-                console.log(data.password);
+                console.log(data);
                 $(location).attr("href","#/posts/all");
             });
         });
@@ -37,6 +37,7 @@ app.userController = (function(){
                 var email = $("#email-signup").val();
                 var userModel = new SignUpUserModel(username, email, password);
                 _this.userRepoModel.signUp(userModel).then(function(success){
+                    console.log(success);
                     $(location).attr("href","#/posts/all")
                 }, function(error){
                     //TODO : SHOW VALIDATION MESSAGES

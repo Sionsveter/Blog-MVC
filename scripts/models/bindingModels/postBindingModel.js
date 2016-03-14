@@ -2,7 +2,7 @@
  * Created by user on 8.3.2016 г..
  */
 var PostBindingModel = (function(){
-    function PostModel(title, description,content,userId, username){
+    function PostModel(title, description,content,userId, username, userPassword){
         this.setTitle(title);
         this.setDescription(description);
         this.setContent(content);
@@ -12,9 +12,11 @@ var PostBindingModel = (function(){
             "_type": "KinveyRef",
             "_id": userId,
             "_collection": "Posts",
-            "username": username
+            "username": username,
+            "posterPass":userPassword
 
         };
+
         this.postDate = new Date();
         this.views = 0;
     }
