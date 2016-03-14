@@ -2,7 +2,7 @@
  * Created by user on 13.3.2016 г..
  */
 var PostViewModel = (function(){
-    function PostViewModel(postId, title, description, content, comments, tags, author, postedOn){
+    function PostViewModel(postId, title, description, content, comments, tags, author, postedOn, views){
         this.title = title;
         this.description = description;
         this.content = content;
@@ -11,6 +11,7 @@ var PostViewModel = (function(){
         this.author = author;
         this.postId = postId;
         this.postedOn = postedOn;
+        this.views = views;
     }
     return PostViewModel;
 })();

@@ -46,6 +46,7 @@ app.userRepoModel = (function(){
         localStorage.clear();
         $.notify('User logged out successfully!', 'success');
         window.onload();//reloads the header on logout
+        $(location).attr('href', '#/');
     };
 
     return {

@@ -15,7 +15,8 @@ var PostBindingModel = (function(){
             "username": username
 
         };
-        this.postDate = new Date()
+        this.postDate = new Date();
+        this.views = 0;
     }
     return PostModel;
 })();
