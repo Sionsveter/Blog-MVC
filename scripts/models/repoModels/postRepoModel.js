@@ -59,16 +59,21 @@ app.postRepoModel = (function(){
         this.requester.getRequest(this.url+'?query={"_id":"'+id+'"}')
             .then(function(data){
                 var post = data[0];
+                console.log(data[0]);
                 var postViewModel = new PostViewModel(post._id, post.title, post.description,
                     post.content, post.comments, post.tags, post.author, post.postDate, post.views);
                 postViewModel.views++;
-                _this.requester.putRequest(_this.url + "" + id, postViewModel, false);
-                deffer.resolve(data[0])},
+                console.log(postViewModel);
+
+                //_this.requester.putRequest(_this.url + "" + id, postViewModel, false).then(function(data){console.log(data)}, function(error){
+                //    console.log(error);
+                //});
+                deffer.resolve(postViewModel)},
                 function(error){
                     deffer.reject(error);
                 }
             );
-        console.log(this.url+'/?query={"_id":"'+id+'"}');
+
         return deffer.promise;
     };
     return {

@@ -18,10 +18,13 @@ app.postController = (function(){
             var content = $("#content").val();
             var userId = localStorage["userId"];
             var username = localStorage["username"];
+
             var tagsArray = $("#tags").val().trim().split(/\s+/);
-            console.log(tagsArray);
             var postModel = new PostBindingModel(title,description, content, userId, username);
             tagsArray.forEach(function(tag){
+                if(!tag || /^\s*$/.test(tag)){
+                    throw new Error("Tags cannot be empty.");
+                }
                 postModel.tags.push(tag);
             });
             _this.repoModel.addPostRequest(postModel)
@@ -44,6 +47,7 @@ app.postController = (function(){
     PostController.prototype.loadAllPosts = function(selector){
         var _this = this;
         this.repoModel.getAllPosts().then(function(posts){
+            console.log(posts);
             _this.tagsRepoModel.getAllTags().then(function(tags){
                 var data = {
                     "posts": posts,

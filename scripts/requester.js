@@ -30,6 +30,7 @@ app.requester = (function () {
                 defer.resolve(data);
             },
             error:function(error){
+
                 defer.reject(error);
             }
         });

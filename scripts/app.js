@@ -13,6 +13,7 @@ window.onload = function() {
 (function(){
     app.router = Sammy(function () {
         var selector = '#wrapper',
+            userOptions = "#userOptions",
             header = 'header',
             userRepoModel = app.userRepoModel.load(),
             postRepoModel = app.postRepoModel.load(),
@@ -22,17 +23,27 @@ window.onload = function() {
             tagsRepoModel = app.tagsRepoModel.load(),
             postController = app.postController.load(postRepoModel, tagsRepoModel);
 
+        //this.before({except:{path:'#\/(user/(login|signUp))?'}}, function(){
+        //   var loggedInUser = localStorage['loggedInUser'];
+        //    if(!loggedInUser){
+        //        this.redirect("#/user/login");
+        //        window.onload();
+        //
+        //    }
+        //});
+
         this.get('#/', function () {
             homeController.getHomePage(selector);
         });
         this.get('#/user/options', function(){
-            userController.getLogoutPage(selector);
+            userController.getLogoutPage(userOptions);
+            this.redirect("#/");
         });
         this.get('#/user/login', function(){
-            userController.getLoginPage(selector);
+            userController.getLoginPage(userOptions);
         });
         this.get('#/user/signUp', function(){
-            userController.getSignUpPage(selector);
+            userController.getSignUpPage(userOptions);
         });
         this.get('#/posts/add', function(){
             postController.addPost(selector);

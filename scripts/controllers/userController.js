@@ -9,13 +9,14 @@ app.userController = (function(){
     }
     UserController.prototype.getLoginPage = function() {
         var _this = this;
-        console.log($("#login-button"));
+
         $("#login-button").click(function () {
             var username = $("#username-login").val();
             var password = $("#password-login").val();
             var loginUserModel = new LogInUser(username, password);
-            console.log($("#username").val());
-            _this.userRepoModel.login(loginUserModel).then(function(){
+
+            _this.userRepoModel.login(loginUserModel).then(function(data){
+                console.log(data.password);
                 $(location).attr("href","#/posts/all");
             });
         });
@@ -24,6 +25,8 @@ app.userController = (function(){
         var _this = this;
         $("#user-control-logout").click(function () {
             _this.userRepoModel.logout();
+            $("location").attr("href","#/");
+
         });
     };
     UserController.prototype.getSignUpPage = function() {
