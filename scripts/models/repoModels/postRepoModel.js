@@ -60,7 +60,7 @@ app.postRepoModel = (function(){
             .then(function(data){
                 var post = data[0];
                 var postViewModel = new PostViewModel(post._id, post.title, post.description,
-                    post.content, post.comments, post.tags, post.author.username, post.postDate, post.views);
+                    post.content, post.comments, post.tags, post.author, post.postDate, post.views);
                 postViewModel.views++;
                 _this.requester.putRequest(_this.url + "" + id, postViewModel, false);
                 deffer.resolve(data[0])},

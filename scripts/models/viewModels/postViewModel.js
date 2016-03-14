@@ -10,7 +10,7 @@ var PostViewModel = (function(){
         this.tags = tags;
         this.author = author;
         this.postId = postId;
-        this.postedOn = postedOn;
+        this.postDate = postedOn;
         this.views = views;
     }
     return PostViewModel;
