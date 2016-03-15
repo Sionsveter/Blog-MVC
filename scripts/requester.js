@@ -100,7 +100,7 @@ app.requester = (function () {
     Requester.prototype.putRequest = function(url, data, async, username, password){
         var token,
             defer = Q.defer();
-            token = 'Kinvey ' + btoa(username+":"+password);
+            token = 'Basic ' + btoa(username+":"+password);
 
 
         $.ajax({
