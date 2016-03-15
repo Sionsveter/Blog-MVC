@@ -1,12 +1,16 @@
-/**
- * Created by user on 13.3.2016 г..
- */
+
 var CommentBindingModel = (function(){
-    function CommentModel(currentUser, userEmail=null, content, postId=null){
-        this.userName = userName($("#commenterName").val());
-        this.userEmail = userEmail($("#commenterEmail").val());
+    function CommentBindingModel(currentUser, mail, content, postId){
+        this.setUserName(currentUser);
+        this.setUserEmail(mail);
         this.content = content;
-        this.postId = postId;
+        this.postOn = new Date();
+        this.author = {
+            "_type": "KinveyRef",
+            "_id": postId,
+            "_collection": "Posts"
+        };
+
     }
 
     function isBlankNullOrUndefined(str) {
@@ -23,18 +27,18 @@ var CommentBindingModel = (function(){
         return (false)
     }
 
-    CommentBindingModel.prototype.userName = function(value){
-        if(isBlankNullOrUndefined(value)){
+    CommentBindingModel.prototype.setUserName = function(value){
+        if(!isBlankNullOrUndefined(value)){
             throw new Error("Name cannot be empty.");
         }
         this.username = value;
     };
 
-    CommentBindingModel.prototype.userEmail = function(value){
-        if(!ValidateEmail(value)){
+    CommentBindingModel.prototype.setUserEmail = function(value){
+        if(ValidateEmail(value)){
             throw new Error("Email is in invalid format.");
         }
         this.userEmail = value;
     };
-    return CommentModel;
+    return CommentBindingModel;
 })();

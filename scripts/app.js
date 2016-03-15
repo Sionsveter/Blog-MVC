@@ -20,10 +20,10 @@ window.onload = function() {
                 userRepoModel = app.userRepoModel.load(),
                 postRepoModel = app.postRepoModel.load(),
                 homeController = app.homeController.load(),
-                commentController = app.commentController.load(),
                 userController = app.userController.load(userRepoModel),
                 tagsRepoModel = app.tagsRepoModel.load(),
-                postController = app.postController.load(postRepoModel, tagsRepoModel);
+                commentRepoModel = app.commentRepoModel.load(),
+                postController = app.postController.load(postRepoModel, tagsRepoModel, commentRepoModel);
 
             //this.before({except:{path:'#\/(user/(login|signUp))?'}}, function(){
             //    var loggedInUser = localStorage['loggedInUser'];
@@ -55,14 +55,7 @@ window.onload = function() {
                     $.notify(e.message,"error");
                 }
             });
-            this.get('#/comments/add', function(){
-                try{
-                    commentController.addComment(selector);
-                }
-                catch (e){
-                    $.notify(e.message,"error");
-                }
-            });
+
             this.get('#/posts/all',function(){
                 postController.loadAllPosts(selector);
             });

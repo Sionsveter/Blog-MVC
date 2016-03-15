@@ -7,16 +7,16 @@ app.commentRepoModel = (function(){
     function CommentRepoModel(){
 
         this.requester = app.requester.load();
-        this.url = this.requester.baseUrl +"appdata/"+this.requester.appId+"/Posts/";
+        this.url = this.requester.baseUrl +"appdata/"+this.requester.appId+"/Comments/";
 
         this.commentRepo = {
             comments:[]
         }
     }
-    CommentRepoModel.prototype.addCommentRequest = function(commentModel){
+    CommentRepoModel.prototype.addComment = function(commentModel){
         var _this = this,
             deffer = Q.defer();
-        this.requester.postRequest(this.url, commentModel).then(function(data){
+        this.requester.postRequest(this.url, commentModel, false).then(function(data){
             deffer.resolve(data);
         },function(error){
             deffer.reject(error);

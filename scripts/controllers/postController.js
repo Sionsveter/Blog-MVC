@@ -4,9 +4,10 @@
 var app = app || {};
 
 app.postController = (function(){
-    function PostController(repoModel, tagsRepoModel){
+    function PostController(repoModel, tagsRepoModel, commentRepoModel){
         this.repoModel = repoModel;
         this.tagsRepoModel = tagsRepoModel;
+        this.commentRepoModel = commentRepoModel;
     }
     PostController.prototype.addPost = function(selector){
         app.addPostView.load(selector);
@@ -80,8 +81,19 @@ app.postController = (function(){
             });
     };
     PostController.prototype.loadPostById = function(selector, id){
+        var _this=this;
         this.repoModel.getPostById(id).then(function(data){
            app.postView.load(selector,data);
+            $("#addComment").click(function(){
+                var userName =  $("#commenterName").text();
+                var userEmail = $("#commenterEmail").val();
+                var comment = $("#comment").val();
+                var commentModel = new CommentBindingModel(userName, userEmail, comment, id);
+                _this.commentRepoModel.addComment(commentModel).then(function(data){
+
+                    console.log(data);
+                })
+            })
         });
 
     };
