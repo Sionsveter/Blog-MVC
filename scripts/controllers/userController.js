@@ -46,7 +46,10 @@ app.userController = (function(){
                 var email = $("#email-signup").val();
                 var userModel = new SignUpUserModel(username, email, password);
                 _this.userRepoModel.signUp(userModel).then(function(success){
-                    console.log(success);
+                    var loginUserModel = new LogInUser(success.username, success.password, success.password);
+                    _this.userRepoModel.login(loginUserModel).then(function(data){
+                        $(location).attr("href","#/posts/all");
+                    });
                     $(location).attr("href","#/posts/all")
                 }, function(error){
                     //TODO : SHOW VALIDATION MESSAGES

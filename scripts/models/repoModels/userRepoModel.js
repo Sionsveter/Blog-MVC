@@ -18,8 +18,6 @@ app.userRepoModel = (function() {
             .then(function (success) {
                 $.notify('User registered successfully!', 'success');
                 deffer.resolve(success)
-
-
             }, function (error) {
                 $.notify("Unsuccessful registration!", 'error');
                 deffer.reject(error);
