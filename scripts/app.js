@@ -20,7 +20,7 @@ window.onload = function() {
                 userRepoModel = app.userRepoModel.load(),
                 postRepoModel = app.postRepoModel.load(),
                 homeController = app.homeController.load(),
-                //commentController = app.commentController.load(),
+                commentController = app.commentController.load(),
                 userController = app.userController.load(userRepoModel),
                 tagsRepoModel = app.tagsRepoModel.load(),
                 postController = app.postController.load(postRepoModel, tagsRepoModel);
@@ -57,7 +57,7 @@ window.onload = function() {
             });
             this.get('#/comments/add', function(){
                 try{
-                    /*commentController.addComment(selector);*/
+                    commentController.addComment(selector);
                 }
                 catch (e){
                     $.notify(e.message,"error");
