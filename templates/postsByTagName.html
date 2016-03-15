@@ -1,10 +1,23 @@
 {{#posts}}
-<a href="#posts/{{postId}}">
-    <h1><strong>{{title}}</strong></h1>
-    <h3>{{description}}</h3>
-    <h3> Posted on {{postedOn}} by {{author}}</h3>
+<!-- First Blog Post -->
+<div id="post">
+    <h2>
+        <a href="#posts/{{postId}}">{{title}}</a>
+    </h2>
+    <p class="lead">
+        by <a href="index.php">{{author}}</a>
+    </p>
+    <p><span class="glyphicon glyphicon-time"></span> Posted on {POSTEDON DOESNT LOAD SHIT} {{postedOn}}</p>
+    <hr>
+    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+    <hr>
+    <p>{{description}}</p>
+    <a class="btn btn-primary" href="#posts/{{postId}}">Read More <span
+            class="glyphicon glyphicon-chevron-right"></span></a>
+    <!--TODO fix tag name displaying-->
     {{#tags}}
     <h5>{{name}}</h5>
     {{/tags}}
-</a>
+</div>
+<hr>
 {{/posts}}
