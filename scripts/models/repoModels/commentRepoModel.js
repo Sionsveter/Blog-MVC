@@ -8,7 +8,7 @@ app.commentRepoModel = (function(){
 
         this.requester = app.requester.load();
         this.url = this.requester.baseUrl +"appdata/"+this.requester.appId+"/Comments/";
-
+        console.log(this.url);
         this.commentRepo = {
             comments:[]
         }

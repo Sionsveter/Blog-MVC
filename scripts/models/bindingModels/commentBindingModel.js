@@ -17,15 +17,7 @@ var CommentBindingModel = (function(){
         return (!str || /^\s*$/.test(str));
     }
 
-    function ValidateEmail(value)
-    {
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value))
-        {
-            return (true)
-        }
 
-        return (false)
-    }
 
     CommentBindingModel.prototype.setUserName = function(value){
         if(!isBlankNullOrUndefined(value)){
@@ -35,9 +27,7 @@ var CommentBindingModel = (function(){
     };
 
     CommentBindingModel.prototype.setUserEmail = function(value){
-        if(ValidateEmail(value)){
-            throw new Error("Email is in invalid format.");
-        }
+
         this.userEmail = value;
     };
     return CommentBindingModel;

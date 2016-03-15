@@ -12,6 +12,8 @@ app.postController = (function(){
     PostController.prototype.addPost = function(selector){
         app.addPostView.load(selector);
         var _this = this;
+        console.log(_this);
+        console.log(this.commentRepoModel);
         $("#addPost").click(function(){
             var title = $("#title").val();
             var description = $("#description").val();
@@ -86,6 +88,8 @@ app.postController = (function(){
     };
     PostController.prototype.loadPostById = function(selector, id){
         var _this=this;
+        console.log(_this);
+        console.log(this.commentRepoModel);
         this.repoModel.getPostById(id).then(function(data){
            app.postView.load(selector,data);
             $("#addComment").click(function(){
@@ -94,7 +98,7 @@ app.postController = (function(){
                 var comment = $("#comment").val();
                 var commentModel = new CommentBindingModel(userName, userEmail, comment, id);
                 _this.commentRepoModel.addComment(commentModel).then(function(data){
-
+                    $(location).attr("href","posts/"+id);
                     console.log(data);
                 })
             })
@@ -103,8 +107,8 @@ app.postController = (function(){
     };
 
     return {
-        load:function(repoModel, tagsRepoModel){
-            return new PostController(repoModel, tagsRepoModel);
+        load:function(repoModel, tagsRepoModel, commentRepoModel){
+            return new PostController(repoModel, tagsRepoModel, commentRepoModel);
         }
     }
 

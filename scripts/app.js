@@ -25,6 +25,7 @@ window.onload = function() {
                 commentRepoModel = app.commentRepoModel.load(),
                 postController = app.postController.load(postRepoModel, tagsRepoModel, commentRepoModel);
 
+
             //this.before({except:{path:'#\/(user/(login|signUp))?'}}, function(){
             //    var loggedInUser = localStorage['loggedInUser'];
             //    if(!loggedInUser){
