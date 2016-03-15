@@ -9,6 +9,9 @@ window.onload = function() {
     }
     // TODO : load footer on window load
     app.homeView.load()
+
+    var sidebarController = app.sidebarController.load();
+    sidebarController.showSidebarInfo();
 };
 
 (function(){
