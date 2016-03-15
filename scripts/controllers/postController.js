@@ -65,6 +65,10 @@ app.postController = (function(){
                     $(location).attr("href","#/postsByTagName/" + selectedTagName);
                 })
             })
+        }, function(error){
+            if(error.status === 401){
+                $.notify('You must log in first.', 'error');
+            }
         });
     };
     PostController.prototype.loadPostsByTagName = function(selector, selectedTagName){

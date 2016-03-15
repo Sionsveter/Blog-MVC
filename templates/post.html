@@ -2,13 +2,13 @@
 
 <!-- Author -->
 <p class="lead">
-    by <a href="#">{USERNAME}</a>
+    by <a href="#/user/{{author._id}}">{{author.username}}</a>
 </p>
 
 <hr>
 
 <!-- Date/Time -->
-<p><span class="glyphicon glyphicon-time"></span> Posted on {POSTDATE}</p>
+<p><span class="glyphicon glyphicon-time"></span> Posted on {{postDate}}</p>
 
 <hr>
 
@@ -40,7 +40,6 @@
 </div>
 
 <div id="viewComments">
-
     <p>{{commentsContent}}</p>
     <p>No Comments yet</p>
 </div>
