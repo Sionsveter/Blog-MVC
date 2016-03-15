@@ -8,6 +8,7 @@ window.onload = function() {
         app.signUpView.load('header');
     }
     // TODO : load footer on window load
+    app.homeView.load()
 };
 
 (function(){

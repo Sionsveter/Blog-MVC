@@ -2,6 +2,18 @@ aside {
     display: block;
 }
 
-aside div p{
+aside div p {
     display: block;
+}
+
+#addPostsDiv textarea, input{
+    width: 100%;
+}
+
+#addPostsDiv div {
+    margin-top: 20px;
+}
+
+#addPost {
+    width: 100%;
 }
