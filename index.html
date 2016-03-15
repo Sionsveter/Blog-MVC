@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="css/loginFormStyles.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="scripts/lib/bootstrap.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
     <link rel="stylesheet" href="css/footer-distributed-with-address-and-phones.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -25,7 +26,7 @@
 </header>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <div class="col-lg-8">
             <ul>
                 <li><a href="#/">Home</a></li>
                 <li><a href="#/posts/add">Add post</a></li>
@@ -34,31 +35,74 @@
             <hr>
             <div id="wrapper"></div>
         </div>
-        <div class="col-md-2 col-lg-2 sidebar">
 
-            <div>
+        <div class="col-md-4">
+
+            <!-- Blog Search Well -->
+            <div class="well">
+                <h4>Tag Search</h4>
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                </div>
+                <!-- /.input-group -->
+            </div>
+
+            <!-- Blog Categories Well -->
+            <div class="well">
+                <h4>Latest posts</h4>
                 <ul>
-                    Latest posts
-                    <li><a href="">Post 1</a></li>
-                    <li><a href="">Post 2</a></li>
-                    <li><a href="">Post 3 </a></li>
-                    <li><a href="">Post 4</a></li>
-                    <li><a href="">Post 5</a></li>
+                    <li>{POSTNAME}</li>
+                    <li>{POSTNAME}</li>
+                    <li>{POSTNAME}</li>
+                    <li>{POSTNAME}</li>
+                    <li>{POSTNAME}</li>
+                    <li>{POSTNAME}</li>
+                    <li>{POSTNAME}</li>
+                    <li>{POSTNAME}</li>
+                    <li>{POSTNAME}</li>
                 </ul>
             </div>
-            <div>
-                <ul>
-                    Tags
-                    <li><a href="">Tag 1</a></li>
-                    <li><a href="">Tag 2</a></li>
-                    <li><a href="">Tag 3</a></li>
-                    <li><a href="">Tag 4</a></li>
-                    <li><a href="">Tag 5</a></li>
-                </ul>
+
+            <div class="well">
+                <h4>Tags</h4>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Tag Name</a>
+                            </li>
+                            <li><a href="#">Tag Name</a>
+                            </li>
+                            <li><a href="#">Tag Name</a>
+                            </li>
+                            <li><a href="#">Tag Name</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Tag Name</a>
+                            </li>
+                            <li><a href="#">Tag Name</a>
+                            </li>
+                            <li><a href="#">Tag Name</a>
+                            </li>
+                            <li><a href="#">Tag Name</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.row -->
             </div>
-            <div>
+
+            <!-- Side Widget Well -->
+            <div class="well">
+                <h4>Archive</h4>
                 <ul>
-                    Archive
                     <li><a href="#">November 2015</a>&nbsp;(1)</li>
                     <li><a href="#">July 2015</a>&nbsp;(1)</li>
                     <li><a href="#">March 2015</a>&nbsp;(1)</li>
@@ -84,7 +128,10 @@
                     <li><a href="#">March 2012</a>&nbsp;(5)</li>
                 </ul>
             </div>
+
         </div>
+
+
     </div>
 </div>
 

@@ -1,40 +1,49 @@
-<section id="postSection">
-    <section id="postHeading">
-        <h1 id="postTitle">{{title}}</h1>
-    </section>
-    <section id="postMain">
-        <h2>{{description}}</h2>
-        <h3>{{content}}</h3>
-    </section>
-    <section id="commentsSection">
-        <div id="viewComments">
+<h1>{{title}}</h1>
 
-            <p>{{commentsContent}}</p>
-            <p>No Comments yet</p>
-        </div>
+<!-- Author -->
+<p class="lead">
+    by <a href="#">{USERNAME}</a>
+</p>
 
-        <br/>
+<hr>
 
-        <div id="newComment">
-            <p>You can comment on this:</p>
-            <label for="commenterName">Name:</label>
-            <input type="text" id="commenterName"/>
-            <br/>
-            <br/>
+<!-- Date/Time -->
+<p><span class="glyphicon glyphicon-time"></span> Posted on {POSTDATE}</p>
 
-            <label for="commenterEmail">Email:</label>
-            <input type="text" id="commenterEmail"/>
-            <br/>
-            <br/>
+<hr>
 
+<!-- Preview Image -->
+<img class="img-responsive" src="http://placehold.it/900x300" alt="">
+
+<hr>
+
+<!--<h2>{{description}}</h2>-->
+<p class="lead">{{content}}</p>
+
+<hr>
+
+<div class="well">
+    <h4>Leave a Comment:</h4>
+    <label for="commenterName">Name:</label>
+    <input type="text" id="commenterName"/>
+
+    <label for="commenterEmail">Email:</label>
+    <input type="text" id="commenterEmail"/>
+
+    <form role="form">
+        <div class="form-group">
             <label for="comment">Comment:</label>
             <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-            <br/>
-            <br/>
-
-            <button id="addComment">Add comment</button>
-
-
         </div>
-    </section>
-</section>
+        <button type="submit" class="btn btn-primary" id="addComment">Submit</button>
+    </form>
+</div>
+
+<div id="viewComments">
+
+    <p>{{commentsContent}}</p>
+    <p>No Comments yet</p>
+</div>
+
+
+
