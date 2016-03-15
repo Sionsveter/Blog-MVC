@@ -1,37 +1,40 @@
-<h2>See whole posts</h2>
+<section id="postSection">
+    <section id="postHeading">
+        <h1 id="postTitle">{{title}}</h1>
+    </section>
+    <section id="postMain">
+        <h2>{{description}}</h2>
+        <h3>{{content}}</h3>
+    </section>
+    <section id="commentsSection">
+        <div id="viewComments">
 
-<h1>{{title}}</h1>
-<h2>{{description}}</h2>
-<h3>{{content}}</h3>
+            <p>{{commentsContent}}</p>
+            <p>No Comments yet</p>
+        </div>
 
-<br/>
-<div id="viewComments">
+        <br/>
 
-<p>{{commentsContent}}</p>
-<p>No Comments yet</p>
-</div>
+        <div id="newComment">
+            <p>You can comment on this:</p>
+            <label for="commenterName">Name:</label>
+            <input type="text" id="commenterName"/>
+            <br/>
+            <br/>
 
-<br/>
+            <label for="commenterEmail">Email:</label>
+            <input type="text" id="commenterEmail"/>
+            <br/>
+            <br/>
 
-<div id="newComment">
-<p>You can comment on this:</p>
-    <label for="commenterName">Name:</label>
-    <input type="text" id="commenterName"/>
-    <br/>
-    <br/>
+            <label for="comment">Comment:</label>
+            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            <br/>
+            <br/>
 
-    <label for="commenterEmail">Email:</label>
-    <input type="text"  id="commenterEmail"/>
-    <br/>
-    <br/>
-
-    <label for="comment">Comment:</label>
-    <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-    <br/>
-    <br/>
-
-    <button id="addComment">Add comment</button>
+            <button id="addComment">Add comment</button>
 
 
-
-</div>
+        </div>
+    </section>
+</section>

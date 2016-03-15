@@ -1,9 +1,25 @@
-aside {
-    display: block;
+body, footer {
+    font-family: 'Titillium Web', sans-serif;
+    background-color: black;
 }
 
-aside div p {
+.container {
+    border: 1px solid black;
+}
+
+.sidebar {
     display: block;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+ a {
+    color: white;
+}
+
+.sidebar div {
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 #addPostsDiv textarea, input{
@@ -16,4 +32,50 @@ aside div p {
 
 #addPost {
     width: 100%;
+}
+
+#postMain  {
+    background-color: black;
+    width: 100%;
+    color: #fff;
+}
+
+
+#postTitle {
+    text-align: center;
+    font-size: 34px;
+    color: #fff;
+}
+
+#allPostsDiv {
+    text-align: center;
+}
+#allPostsDiv  a {
+    color: black;
+    text-decoration: none;
+}
+
+#allPostsDiv  {
+    color: #34495E;
+    text-decoration: none;
+}
+
+ul {
+    color: #34495E;
+}
+
+#post {
+    border: 1px solid black;
+    background-color: #fff;
+
+}
+#post:hover {
+    background-color: #292C2F;
+    border: 1px solid white;
+    color: black;
+}
+
+#newComment textarea, #addComment {
+    width: 100%;
+    color: white;
 }
