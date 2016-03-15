@@ -42,14 +42,17 @@ window.onload = function() {
                 homeController.getHomePage(selector);
             });
             this.get('#/user/options', function(){
-                userController.getLogoutPage(userOptions);
+                userController.loadLogoutPage(userOptions);
                 this.redirect("#/");
             });
             this.get('#/user/login', function(){
                 userController.getLoginPage(userOptions);
             });
             this.get('#/user/signUp', function(){
-                userController.getSignUpPage(userOptions);
+                userController.loadSignUpPage(userOptions);
+            });
+            this.get('#/user/:userId', function(){
+                userController.loadUserViewPage(selector, this.params['userId']);
             });
             this.get('#/posts/add', function(){
                 try{

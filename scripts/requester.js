@@ -10,7 +10,7 @@ app.requester = (function () {
         this.baseUrl = "https://baas.kinvey.com/";
     }
 
-    Requester.prototype.getRequest = function(url){
+    Requester.prototype.getRequest = function(url, async){
         var token,
             defer = Q.defer();
 
@@ -26,6 +26,7 @@ app.requester = (function () {
                 'Authorization': token
             },
             url: url,
+            async: async,
             success:function(data){
                 defer.resolve(data);
             },

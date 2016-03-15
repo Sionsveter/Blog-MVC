@@ -39,7 +39,7 @@ app.postRepoModel = (function(){
             .then(function(data){
                 data.forEach(function(post){
                     var postViewModel = new PostViewModel(post._id, post.title, post.description,
-                        post.content, post.comments, post.tags, post.author.username, post.postDate, post.views);
+                        post.content, post.comments, post.tags, post.author, post.postDate, post.views);
                     _this.postRepo["posts"].push(postViewModel);
 
                 });

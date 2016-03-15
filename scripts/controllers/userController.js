@@ -21,7 +21,7 @@ app.userController = (function(){
             });
         });
     };
-    UserController.prototype.getLogoutPage = function() {
+    UserController.prototype.loadLogoutPage = function() {
         var _this = this;
         $("#user-control-logout").click(function () {
             _this.userRepoModel.logout();
@@ -29,7 +29,16 @@ app.userController = (function(){
 
         });
     };
-    UserController.prototype.getSignUpPage = function() {
+    UserController.prototype.loadUserViewPage = function(selector, userId){
+        var _this = this;
+            this.userRepoModel.getUserById(userId).then(function (user) {
+                _this.userRepoModel.getPostsByUserId(userId).then(function(posts){
+                   var userViewModel = new UserViewModel(user.username, user.email, posts);
+                   app.userProfileView.load(selector, userViewModel);
+               });
+            });
+    };
+    UserController.prototype.loadSignUpPage = function() {
         var _this = this;
             $("#sign-up-button").on("click", function () {
                 var username = $("#username-signup").val();
