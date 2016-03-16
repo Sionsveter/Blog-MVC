@@ -9,7 +9,7 @@
 fieldset {
     border: none;
 }
-img{
+#user-profile-pic{
     width:150px;
     margin-bottom:10px;
     border-radius: 150px;
