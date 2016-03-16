@@ -32,6 +32,8 @@ app.userRepoModel = (function() {
         this.requester.putRequest(this.url+userId, editedUserModel, false)
             .then(function (success) {
                 $.notify('Profile updated!', 'success');
+                localStorage["profilePic"] = success.profilePic;
+                app.reloadUserProfile();
                 deffer.resolve(success)
             }, function (error) {
                 $.notify("Updating failed!", 'error');
@@ -47,6 +49,7 @@ app.userRepoModel = (function() {
                 localStorage["loggedInUser"] = success._kmd.authtoken;
                 localStorage["userId"] = success._id;
                 localStorage["username"] = success.username;
+                localStorage["profilePic"] = success.profilePic;
                 deffer.resolve(success);
                 window.onload();//reloads the header on login
             }, function (error) {

@@ -53,7 +53,7 @@ fieldset {
   border-radius: 5px;
   padding-top: 5px;
 }
-.formholder input[type="email"], .formholder input[type="password"],.formholder input[type="text"] {
+.formholder input[type="email"], .formholder input[type="password"],.formholder input[type="text"],.formholder input[type="url"] {
   padding: 7px 5px;
   margin: 10px 0;
   width: 96%;

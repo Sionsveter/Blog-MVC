@@ -37,10 +37,14 @@ app.userController = (function(){
             var confirmNewPass = $("#password-new-edit-confirm").val();
             var newEmail = $("#email-new-edit").val();
             var newFullname = $("#fullname-new-edit").val();
+            var newProfilePic = $("#user-profile-pic-new-edit").val();
+            if(!newProfilePic){
+                newProfilePic = "http://www.adtechnology.co.uk/images/UGM-default-user.png";
+            }
             var currentUsername = localStorage["username"];
             var currentUserId = localStorage["userId"];
 
-            var userModel = new SignUpUserModel(currentUsername, newEmail, newPass);
+            var userModel = new SignUpUserModel(currentUsername, newEmail, newPass,newProfilePic);
 
             _this.userRepoModel.editProfile(currentUserId,userModel).done();
         });
@@ -60,7 +64,11 @@ app.userController = (function(){
                 var username = $("#username-signup").val();
                 var password = $("#password-signup").val();
                 var email = $("#email-signup").val();
-                var userModel = new SignUpUserModel(username, email, password);
+                var profilePic = $("#user-profile-pic").val();
+                if(!profilePic){
+                    profilePic = "http://www.adtechnology.co.uk/images/UGM-default-user.png";
+                }
+                var userModel = new SignUpUserModel(username, email, password,profilePic);
                 _this.userRepoModel.signUp(userModel).then(function(success){
                     var loginUserModel = new LogInUser(success.username, success.password, success.password);
                     _this.userRepoModel.login(loginUserModel).then(function(data){
