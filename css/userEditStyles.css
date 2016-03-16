@@ -9,7 +9,11 @@
 fieldset {
     border: none;
 }
-
+img{
+    width:150px;
+    margin-bottom:10px;
+    border-radius: 150px;
+}
 .user-edit {
     position: relative;
     width: 350px;
