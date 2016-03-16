@@ -21,12 +21,45 @@ app.sidebarRepoModel = (function(){
                     data.forEach(function(post){
                         _this.sidebarRepo["lastPosts"].push(post);
                     });
-                    deffer.resolve(_this.sidebarRepo)
+
+                    _this.requester.getRequest(_this.url+'/Tags')
+                        .then(function(data){
+                                var arrTags = [];
+
+                                data.forEach(function(tag){
+                                    arrTags.push(tag);
+                                });
+
+                                var modifiedTags = arrTags.map(function(tag){
+                                    var obj = {name:tag.name,tagId:tag._id,posts:tag.posts.length};
+
+                                    return obj;
+                                });
+
+                                modifiedTags.sort(function (a, b) {
+                                    if (b.posts > a.posts) {
+                                        return 1;
+                                    }
+                                    if (b.posts < a.posts) {
+                                        return -1;
+                                    }
+
+                                    return 0;
+                                });
+
+                                _this.sidebarRepo['allTags'] = modifiedTags.slice(0, 30);
+                                deffer.resolve(_this.sidebarRepo)
+                            },
+                            function(error){
+                                deffer.reject(error);
+                            }
+                        );
             },
                 function(error){
                     deffer.reject(error);
                 }
             );
+
         console.log(this.sidebarRepo);
         return deffer.promise;
     };
