@@ -56,60 +56,37 @@ app.postController = (function(){
         var _this = this;
         this.repoModel.getAllPosts().then(function(posts){
            var pageCount = Math.ceil(posts.length/4);
-            var pagePosts;
+
             for(var i=1;i<=pageCount;i++){
-                var $button = $("<button>").text(i).attr("id",i).attr("class","pageButtons");
+                var $a = $("<a>").text(i).attr("href","#/posts/page/"+i);
 
-                $("#paging").append($button);
-
+                $("#paging").append($a);
             }
-            _this.repoModel.getPostsPerPage(4,0)
-                .then(function(postsPerPage) {
-                    pagePosts=postsPerPage;
-                    console.log(pagePosts)
-                });
-
-
-
-
-            _this.tagsRepoModel.getAllTags().then(function(tags){
-                var data = {
-                    "posts": pagePosts,
-                    "tags": tags
-                };
-                $(".pageButtons").each(function(){
-                    var that = this;
-                    var butonIndex = parseInt($(this).attr("id"));
-                    $(this).click(function(){
-                        _this.repoModel.getPostsPerPage(4,(butonIndex-1)*4)
-                            .then(function(data){
-                                pagePosts=data;
-                                var updatedData = {
-                                    "posts":data,
-                                    "tags":tags
-                                };
-                                app.allPostsView.load(selector,updatedData);
-                            })
-                    })
-
-                });
-
-
-                app.allPostsView.load(selector, data);
-
-
-                $('#search-by-tags-button').click(function(){
-                    var selectedTagName = $('#search-tag').val();
-                    $(location).attr("href","#/postsByTagName/" + selectedTagName);
-                })
-            })
-        }, function(error){
+            $(location).attr("href","#/posts/page/1");
+        }
+            , function(error){
             if(error.status === 401){
                 $.notify('You must log in first.', 'error');
             }
         });
 
     };
+    PostController.prototype.postsPerPage = function(selector, page){
+        var _this = this;
+        this.repoModel.getPostsPerPage(4, (page-1)*4).then(
+            function(posts){
+                _this.tagsRepoModel.getAllTags()
+                    .then(function(tags){
+                        var data = {
+                            "posts":posts,
+                            "tags":tags
+                        };
+                        app.allPostsView.load(selector,data)
+                })
+            }
+        )
+    };
+
     PostController.prototype.loadPostsByTagName = function(selector, selectedTagName){
         var neededPosts = [];
             this.repoModel.getAllPosts().then(function(posts){

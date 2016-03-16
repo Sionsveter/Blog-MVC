@@ -69,9 +69,13 @@ window.onload = function() {
                 postController.loadPostsByTagName(selector, this.params['tagName']);
             });
 
-            this.get('#posts/:postId', function(){
+            this.get('#/posts/:postId', function(){
                 postController.loadPostById(selector, this.params['postId']);
             });
+            this.get("#/posts/page/:page", function(){
+                postController.postsPerPage(selector, this.params["page"]);
+
+            })
 
 
 
