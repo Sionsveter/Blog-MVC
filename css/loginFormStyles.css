@@ -23,12 +23,14 @@ fieldset {
   position: relative;
   width: 350px;
   display: none;
+  z-index:9;
 }
 .signup {
   position: relative;
   width: 350px;
   display: none;
   margin-left: 100px;
+  z-index:9;
 }
 
 .arrow-up {
