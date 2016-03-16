@@ -2,13 +2,13 @@ var app = app ||{};
 
 window.onload = function() {
     if (localStorage["loggedInUser"]) {
-        app.allreadyLoggedView.load('header');
+        app.allreadyLoggedView.load('nav');
     }
     else {
-        app.signUpView.load('header');
+        app.signUpView.load('nav');
     }
     // TODO : load footer on window load
-    app.homeView.load()
+    app.homeView.load();
 
     var sidebarController = app.sidebarController.load();
     sidebarController.showSidebarInfo();
@@ -19,7 +19,6 @@ window.onload = function() {
 
             var selector = '#wrapper',
                 userOptions = "#userOptions",
-                header = 'header',
                 userRepoModel = app.userRepoModel.load(),
                 postRepoModel = app.postRepoModel.load(),
                 homeController = app.homeController.load(),

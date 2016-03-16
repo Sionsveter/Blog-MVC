@@ -1,20 +1,20 @@
-
-<label>Search posts by tags:</label>
+<!--Old tag search with select-->
+<!--<label>Search posts by tags:</label>
 <select>
     {{#tags}}
     <option value="{{name}}">{{name}}</option>
     {{/tags}}
 </select>
-<button>Search</button>
+<button>Search</button>-->
 <div id="allPostsDiv">
     {{#posts}}
     <!-- First Blog Post -->
-    <div id="post">
+    <div class="post box">
         <h2>
-            <a href="#posts/{{postId}}">{{title}}</a>
+            <a href="#posts/{{postId}}" class="hvr-underline-from-center">{{title}}</a>
         </h2>
         <p class="lead">
-            by <a href="#/user/{{author._id}}">{{author.username}}</a>
+            by <a href="#/user/{{author._id}}" class="hvr-underline-from-center">{{author.username}}</a>
         </p>
         <p><span class="glyphicon glyphicon-time"></span> Posted on {{postDate}}</p>
         <hr>
@@ -29,7 +29,6 @@
         <h5>{{name}}</h5>
         {{/tags}}
     </div>
-    <hr>
     {{/posts}}
 </div>
 
