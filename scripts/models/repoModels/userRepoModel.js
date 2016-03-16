@@ -24,6 +24,21 @@ app.userRepoModel = (function() {
             });
         return deffer.promise;
     };
+    UserRepoModel.prototype.editProfile = function (userId,editedUserModel) {
+
+        var _this = this;
+
+        var deffer = Q.defer();
+        this.requester.putRequest(this.url+userId, editedUserModel, false)
+            .then(function (success) {
+                $.notify('Profile updated!', 'success');
+                deffer.resolve(success)
+            }, function (error) {
+                $.notify("Updating failed!", 'error');
+                deffer.reject(error);
+            });
+        return deffer.promise;
+    };
     UserRepoModel.prototype.login = function (loginUserModel) {
         var url = this.url + "login";
         var deffer = Q.defer();

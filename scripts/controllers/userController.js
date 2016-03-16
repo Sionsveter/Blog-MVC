@@ -29,6 +29,22 @@ app.userController = (function(){
 
         });
     };
+    UserController.prototype.loadProfileEditPage = function() {
+        var _this = this;
+        $("#save-changes-edit").click(function () {
+            var oldPass = $("#password-old-edit").val();
+            var newPass = $("#password-new-edit").val();
+            var confirmNewPass = $("#password-new-edit-confirm").val();
+            var newEmail = $("#email-new-edit").val();
+            var newFullname = $("#fullname-new-edit").val();
+            var currentUsername = localStorage["username"];
+            var currentUserId = localStorage["userId"];
+
+            var userModel = new SignUpUserModel(currentUsername, newEmail, newPass);
+
+            _this.userRepoModel.editProfile(currentUserId,userModel).done();
+        });
+    };
     UserController.prototype.loadUserViewPage = function(selector, userId){
         var _this = this;
             this.userRepoModel.getUserById(userId).then(function (user) {

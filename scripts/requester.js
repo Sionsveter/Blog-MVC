@@ -101,8 +101,12 @@ app.requester = (function () {
     Requester.prototype.putRequest = function(url, data, async, username, password){
         var token,
             defer = Q.defer();
-            token = 'Basic ' + btoa(username+":"+password);
-
+            token;
+            if(!localStorage['loggedInUser']){
+                token = 'Basic ' + btoa(username+":"+password);
+            }else{
+                token = 'Kinvey ' + localStorage['loggedInUser'];
+            }
 
         $.ajax({
             method: 'PUT',
