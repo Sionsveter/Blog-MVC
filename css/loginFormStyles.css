@@ -18,6 +18,9 @@
 fieldset {
   border: none;
 }
+#main-user-panel{
+  text-align: center;
+}
 
 .login,.user-options {
   position: relative;
