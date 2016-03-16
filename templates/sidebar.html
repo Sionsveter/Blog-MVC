@@ -20,29 +20,9 @@
 <div class="well">
     <h4>Archive</h4>
     <ul>
-        <li><a href="#">November 2015</a>&nbsp;(1)</li>
-        <li><a href="#">July 2015</a>&nbsp;(1)</li>
-        <li><a href="#">March 2015</a>&nbsp;(1)</li>
-        <li><a href="#">December 2014</a>&nbsp;(1)</li>
-        <li><a href="#">November 2014</a>&nbsp;(1)</li>
-        <li><a href="#">August 2014</a>&nbsp;(1)</li>
-        <li><a href="#">April 2014</a>&nbsp;(1)</li>
-        <li><a href="#">September 2013</a>&nbsp;(1)</li>
-        <li><a href="#">July 2013</a>&nbsp;(1)</li>
-        <li><a href="#">June 2013</a>&nbsp;(1)</li>
-        <li><a href="#">March 2013</a>&nbsp;(1)</li>
-        <li><a href="#">February 2013</a>&nbsp;(1)</li>
-        <li><a href="#">January 2013</a>&nbsp;(2)</li>
-        <li><a href="#">December 2012</a>&nbsp;(1)</li>
-        <li><a href="#">November 2012</a>&nbsp;(1)</li>
-        <li><a href="#">October 2012</a>&nbsp;(1)</li>
-        <li><a href="#">September 2012</a>&nbsp;(2)</li>
-        <li><a href="#">August 2012</a>&nbsp;(2)</li>
-        <li><a href="#">July 2012</a>&nbsp;(3)</li>
-        <li><a href="#">June 2012</a>&nbsp;(4)</li>
-        <li><a href="#">May 2012</a>&nbsp;(2)</li>
-        <li><a href="#">April 2012</a>&nbsp;(5)</li>
-        <li><a href="#">March 2012</a>&nbsp;(5)</li>
+        {{#archive}}
+        <li><a href="#">{{name}}</a>&nbsp;({{times}})</li>
+        {{/archive}}
     </ul>
 </div>
 
