@@ -3,15 +3,14 @@ var app = app ||{};
 window.onload = function() {
     if (localStorage["loggedInUser"]) {
         app.allreadyLoggedView.load('nav');
+        var sidebarController = app.sidebarController.load();
+        sidebarController.showSidebarInfo();
     }
     else {
         app.signUpView.load('nav');
     }
     // TODO : load footer on window load
     app.homeView.load();
-
-    var sidebarController = app.sidebarController.load();
-    sidebarController.showSidebarInfo();
 };
 
 (function(){
@@ -43,11 +42,10 @@ window.onload = function() {
             this.get('#/user/options', function(){
                 userController.loadLogoutPage(userOptions);
                 this.redirect("#/");
-            })
-            ;this.get('#/user/edit-profile', function(){
+            });
+            this.get('#/user/edit-profile', function(){
                 userController.loadProfileEditPage();
             });
-
             this.get('#/user/login', function(){
                 userController.getLoginPage(userOptions);
             });

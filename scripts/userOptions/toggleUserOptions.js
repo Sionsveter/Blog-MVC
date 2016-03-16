@@ -31,3 +31,7 @@ $(document).mouseup(function (e)
         $(".user-edit").hide();
     }
 });
+(app.reloadUserProfile = function (){
+     $("#user-profile-pic").attr("src",localStorage["profilePic"]);
+})();
+

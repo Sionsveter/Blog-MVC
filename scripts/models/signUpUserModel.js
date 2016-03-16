@@ -2,10 +2,11 @@
  * Created by user on 8.3.2016 г..
  */
 var SignUpUserModel = (function(){
-    function SignUpUserModel(username, email, password){
+    function SignUpUserModel(username, email, password,profilePic){
         this.setUsername(username);
         this.setPassword(password);
         this.setEmail(email);
+        this.profilePic = profilePic;
         this.passwordForPutRequests = password;
 
 

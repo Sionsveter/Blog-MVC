@@ -6,7 +6,7 @@ app.signUpView = (function() {
         $.ajax({
             method: 'GET',
             url:'templates/signupHeader.html',
-            async: false
+            async: true
         }).success(function(template){
             var output = Mustache.render(template);
 
