@@ -44,7 +44,7 @@ app.postRepoModel = (function(){
 
                 });
                 _this.postRepo["posts"] = _this.postRepo["posts"].sort(function(firstDate, secondDate){
-                    
+
                     return new Date(secondDate.postDate) - new Date(firstDate.postDate);
                 });
                 deffer.resolve(_this.postRepo["posts"]);
