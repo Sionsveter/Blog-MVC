@@ -85,6 +85,33 @@ app.postRepoModel = (function(){
 
         return deffer.promise;
     };
+    PostRepoModel.prototype.getPostsPerPage = function(limit, skip){
+        this.postRepo["posts"].length = 0;
+        var url = this.url +"?query={}&limit="+limit+"&skip="+skip;
+        var _this = this;
+        console.log(url);
+        var deffer = Q.defer();
+        this.requester.getRequest(url,false)
+            .then(function(data){
+                data.forEach(function(post){
+                    var postViewModel = new PostViewModel(post._id, post.title, post.description,
+                        post.content, post.comments, post.tags, post.author, post.postDate, post.views);
+                    _this.postRepo["posts"].push(postViewModel);
+
+                });
+                _this.postRepo["posts"] = _this.postRepo["posts"].sort(function(firstDate, secondDate){
+
+                    return new Date(secondDate.postDate) - new Date(firstDate.postDate);
+                });
+                deffer.resolve(_this.postRepo["posts"]);
+
+            },function(error){
+                deffer.reject(error);
+            });
+        return deffer.promise;
+    };
+
+
     return {
         load:function(){
             return new PostRepoModel();
