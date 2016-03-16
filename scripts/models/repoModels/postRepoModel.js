@@ -11,7 +11,8 @@ app.postRepoModel = (function(){
         this.tagsRepoModel = app.tagsRepoModel.load();
         this.postRepo = {
             posts:[]
-        }
+        };
+
     }
     PostRepoModel.prototype.addPostRequest = function(postModel){
         var _this = this,

@@ -128,6 +128,37 @@ app.requester = (function () {
         return defer.promise;
     };
 
+    Requester.prototype.postCommentRequest = function(url, data, async){
+        var token,
+            defer = Q.defer();
+
+        if(!localStorage['loggedInUser']){
+            token = 'Basic ' + btoa(this.appId + ":" + this.appSecret);
+        }else{
+            token = 'Kinvey ' + localStorage['loggedInUser'];
+        }
+
+
+        $.ajax({
+            method: 'POST',
+            headers: {
+                'Authorization': token,
+                'Content-Type': 'application/json'
+            },
+            url: url,
+            async: async,
+            data: JSON.stringify(data),
+            success:function(data){
+                defer.resolve(data);
+            },
+            error:function(error){
+                defer.reject(error);
+            }
+        });
+
+        return defer.promise;
+    };
+
     return{
         load: function(){
             return new Requester();

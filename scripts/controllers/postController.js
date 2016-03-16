@@ -102,21 +102,34 @@ app.postController = (function(){
     };
     PostController.prototype.loadPostById = function(selector, id){
         var _this=this;
-        console.log(_this);
+        //var data = {
+        //    "posts": posts,
+        //    "tags": tags,
+        //    "comments": commments
+        //};
+       // console.log(_this);
         console.log(this.commentRepoModel);
+
+
+
         this.repoModel.getPostById(id).then(function(data){
            app.postView.load(selector,data);
+
             $("#addComment").click(function(){
-                var userName =  $("#commenterName").text();
+                var userName =  $("#commenterName").val();
                 var userEmail = $("#commenterEmail").val();
                 var comment = $("#comment").val();
                 var commentModel = new CommentBindingModel(userName, userEmail, comment, id);
-                _this.commentRepoModel.addComment(commentModel).then(function(data){
-                    $(location).attr("href","posts/"+id);
-                    console.log(data);
+
+                console.log(commentModel);
+                _this.commentToPostRepoModel.addComment(commentModel).then(function(data){
+                  //      $(location).attr("href","posts/"+id);
+                   //     console.log(data);
                 })
             })
         });
+
+
 
     };
 

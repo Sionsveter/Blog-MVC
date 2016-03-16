@@ -1,16 +1,15 @@
 
 var CommentBindingModel = (function(){
-    function CommentBindingModel(currentUser, mail, content, postId){
+    function CommentBindingModel(currentUser, mail, comment, postId){
         this.setUserName(currentUser);
         this.setUserEmail(mail);
-        this.content = content;
+        this.comment = comment;
         this.postOn = new Date();
         this.author = {
             "_type": "KinveyRef",
             "_id": postId,
             "_collection": "Posts"
         };
-
     }
 
     function isBlankNullOrUndefined(str) {
@@ -20,7 +19,7 @@ var CommentBindingModel = (function(){
 
 
     CommentBindingModel.prototype.setUserName = function(value){
-        if(!isBlankNullOrUndefined(value)){
+        if(isBlankNullOrUndefined(value)){
             throw new Error("Name cannot be empty.");
         }
         this.username = value;

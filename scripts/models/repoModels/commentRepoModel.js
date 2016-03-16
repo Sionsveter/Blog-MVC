@@ -13,10 +13,11 @@ app.commentRepoModel = (function(){
             comments:[]
         }
     }
+
     CommentRepoModel.prototype.addComment = function(commentModel){
         var _this = this,
             deffer = Q.defer();
-        this.requester.postRequest(this.url, commentModel, false).then(function(data){
+        this.requester.postCommentRequest(this.url, commentModel, true).then(function(data){
             deffer.resolve(data);
         },function(error){
             deffer.reject(error);
