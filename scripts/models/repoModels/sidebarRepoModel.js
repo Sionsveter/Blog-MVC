@@ -15,12 +15,23 @@ app.sidebarRepoModel = (function(){
         this.sidebarRepo["lastPosts"].length = 0;
         var deffer = Q.defer();
         var _this = this;
-
-        this.requester.getRequest(this.url+'/Posts?query={}&sort={"postDate": -1}&limit=5&fields=_id,title')
+        var allPosts = [];
+        this.requester.getRequest(this.url+'/Posts')
             .then(function(data){
                     data.forEach(function(post){
-                        _this.sidebarRepo["lastPosts"].push(post);
+                        allPosts.push(post);
                     });
+                    allPosts.sort(function (a, b) {
+                        if (b.postDate > a.postDate) {
+                            return 1;
+                        }
+                        if (b.postDate < a.postDate) {
+                            return -1;
+                        }
+
+                        return 0;
+                    });
+                    _this.sidebarRepo["lastPosts"] = (allPosts).slice(0,5);
 
                     _this.requester.getRequest(_this.url+'/Tags')
                         .then(function(data){
