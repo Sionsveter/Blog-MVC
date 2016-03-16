@@ -43,8 +43,8 @@ window.onload = function() {
             this.get('#/user/options', function(){
                 userController.loadLogoutPage(userOptions);
                 this.redirect("#/");
-            })
-            ;this.get('#/user/edit-profile', function(){
+            });
+            this.get('#/user/edit-profile', function(){
                 userController.loadProfileEditPage();
             });
 
