@@ -81,8 +81,12 @@ app.postController = (function(){
                             "posts":posts,
                             "tags":tags
                         };
-                        app.allPostsView.load(selector,data)
-                })
+                        app.allPostsView.load(selector,data);
+                        $('#search-button').click(function(){
+                            var selectedTagName = $('#search-select').val();
+                            _this.loadPostsByTagName(selector, selectedTagName);
+                        })
+                    })
             }
         )
     };
@@ -102,34 +106,21 @@ app.postController = (function(){
     };
     PostController.prototype.loadPostById = function(selector, id){
         var _this=this;
-        //var data = {
-        //    "posts": posts,
-        //    "tags": tags,
-        //    "comments": commments
-        //};
-       // console.log(_this);
+        console.log(_this);
         console.log(this.commentRepoModel);
-
-
-
         this.repoModel.getPostById(id).then(function(data){
            app.postView.load(selector,data);
-
             $("#addComment").click(function(){
-                var userName =  $("#commenterName").val();
+                var userName =  $("#commenterName").text();
                 var userEmail = $("#commenterEmail").val();
                 var comment = $("#comment").val();
                 var commentModel = new CommentBindingModel(userName, userEmail, comment, id);
-
-                console.log(commentModel);
-                _this.commentToPostRepoModel.addComment(commentModel).then(function(data){
-                  //      $(location).attr("href","posts/"+id);
-                   //     console.log(data);
+                _this.commentRepoModel.addComment(commentModel).then(function(data){
+                    $(location).attr("href","posts/"+id);
+                    console.log(data);
                 })
             })
         });
-
-
 
     };
 

@@ -1,10 +1,10 @@
 <label>Search posts by tags:</label>
-<select>
+<select id="search-select">
     {{#tags}}
     <option value="{{name}}">{{name}}</option>
     {{/tags}}
 </select>
-<button>Search</button>
+<button id="search-button">Search</button>
 <div id="allPostsDiv">
     {{#posts}}
     <!-- First Blog Post -->
